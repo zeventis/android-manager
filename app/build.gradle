@@ -1,6 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+HashMap<String, String> testDependencies = rootProject.ext.testDependencies
+HashMap<String, String> networkDependencies = rootProject.ext.networkDependencies
+HashMap<String, String> otherDependencies = rootProject.ext.otherDependencies
+HashMap<String, String> viewDependencies = rootProject.ext.viewDependencies
+HashMap<String, String> dependencyInjectionDependencies = rootProject.ext.dependencyInjectionDependencies
 
 android {
     compileSdkVersion 29
@@ -22,6 +29,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -32,16 +44,42 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Other Dependencies
+    implementation otherDependencies.kotlin
+    implementation otherDependencies.coreKtx
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    // View Dependencies
+    kapt viewDependencies.lifecycleCompiler
+    implementation viewDependencies.appcompat
+    implementation viewDependencies.lifecycle
+    implementation viewDependencies.constraintLayout
+    implementation viewDependencies.recyclerView
+    implementation viewDependencies.material
+    implementation viewDependencies.glide
+    kapt viewDependencies.glideCompiler
+
+    // Test Dependencies
+    testImplementation testDependencies.junit
+    androidTestImplementation testDependencies.mockk
+    testImplementation testDependencies.koin
+    androidTestImplementation testDependencies.junitExt
+    androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.room
+
+    // Network Dependencies
+    implementation networkDependencies.okhttp
+    implementation networkDependencies.okhttpLoggingInterceptor
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.retrofitConverterGson
+    implementation networkDependencies.gson
+
+    // Dependency Injection Dependencies
+    implementation dependencyInjectionDependencies.koin
+    implementation dependencyInjectionDependencies.koinCore
+    implementation dependencyInjectionDependencies.koinViewModel
+
+    // Coroutines
+    implementation coroutinesDependencies.couroutinesCore
+    implementation coroutinesDependencies.couroutinesAndroid
 }
