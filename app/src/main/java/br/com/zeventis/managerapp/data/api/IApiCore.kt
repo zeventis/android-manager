@@ -1,7 +1,7 @@
 package br.com.zeventis.managerapp.data.api
 
-import br.com.zeventis.managerapp.data.model.LoginRequest
-import br.com.zeventis.managerapp.data.model.UserResponse
+import br.com.zeventis.managerapp.data.model.authentication.LoginRequest
+import br.com.zeventis.managerapp.data.model.authentication.UserResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

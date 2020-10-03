@@ -13,52 +13,50 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
-    flavorDimensions "version"
-    productFlavors {
-        dev {
-            buildConfigField("String", "BASE_URL", "")
-            resValue "string", "app_name", "Eventis - Debug"
-            applicationIdSuffix ".dev"
-            versionNameSuffix '-dev'
-            dimension "version"
-            versionCode 1
-            versionName "1.0"
-        }
-        hml {
-            buildConfigField("String", "BASE_URL", "URL_HEROKU")
-            resValue "string", "app_name", "Eventis - HML"
-            applicationIdSuffix ".hml"
-            versionNameSuffix '-hml'
-            dimension "version"
-            versionCode 1
-            versionName "1.0"
-        }
-        production {
-            buildConfigField("String", "BASE_URL", "URL_AWS")
-            resValue "string", "app_name", "Eventis"
-            applicationIdSuffix ".production"
-            versionNameSuffix '-production'
-            dimension "version"
-            versionCode 1
-            versionName "1.0"
-        }
-    }
-
-
     defaultConfig {
         applicationId "br.com.zeventis.managerapp"
+        versionCode 1
+        versionName "1.0"
         minSdkVersion 21
         targetSdkVersion 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("debug-key.jks")
+            storePassword '123456'
+            keyAlias 'debug-key'
+            keyPassword '123456'
+        }
     }
 
     buildTypes {
         release {
-            buildConfigField("String", "BASE_URL", "")
+            buildConfigField("String", "BASE_URL", '"URL_AWS"')
+            resValue "string", "app_name", "Eventis"
+            applicationIdSuffix ".production"
+            versionNameSuffix '-production'
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
+            buildConfigField("String", "BASE_URL", '"https://5f77d1acd5c9cb001623777e.mockapi.io/"')
+            resValue "string", "app_name", "Eventis - Debug"
+            applicationIdSuffix ".dev"
+            versionNameSuffix '-dev'
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        hml {
+            buildConfigField("String", "BASE_URL", '"https://zeventis-core.herokuapp.com/"')
+            resValue "string", "app_name", "Eventis - HML"
+            applicationIdSuffix ".hml"
+            versionNameSuffix '-hml'
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -81,7 +79,6 @@ dependencies {
     // Other Dependencies
     implementation otherDependencies.kotlin
     implementation otherDependencies.coreKtx
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // View Dependencies
     kapt viewDependencies.lifecycleCompiler
@@ -90,6 +87,7 @@ dependencies {
     implementation viewDependencies.constraintLayout
     implementation viewDependencies.recyclerView
     implementation viewDependencies.material
+    implementation viewDependencies.legacySupport
     implementation viewDependencies.glide
     kapt viewDependencies.glideCompiler
 

@@ -1,17 +1,17 @@
 package br.com.zeventis.managerapp.data.mapper.login
 
 import br.com.zeventis.managerapp.core.plataform.BaseMapper
-import br.com.zeventis.managerapp.data.model.LoginRequest
-import br.com.zeventis.managerapp.domain.model.LoginModel
+import br.com.zeventis.managerapp.data.model.authentication.LoginRequest
+import br.com.zeventis.managerapp.domain.model.authentication.LoginModel
 
 object LoginMapper : BaseMapper<LoginRequest, LoginModel>() {
     override fun transformFrom(s: LoginModel): LoginRequest = LoginRequest(
-        login = s.login,
+        user = s.user,
         password = s.password
     )
 
     override fun transformTo(s: LoginRequest): LoginModel = LoginModel(
-        login = s.login,
+        user = s.user,
         password = s.password
     )
 }

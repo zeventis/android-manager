@@ -1,8 +1,6 @@
-package br.com.zeventis.managerapp.core.api
+package br.com.zeventis.managerapp.core.network
 
 import br.com.zeventis.managerapp.BuildConfig
-import br.com.zeventis.managerapp.R
-import br.com.zeventis.managerapp.core.ZeventisApplication
 import br.com.zeventis.managerapp.data.api.IApiCore
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -12,20 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 fun provideApi(retrofit: Retrofit): IApiCore = retrofit.create(IApiCore::class.java)
 
-fun provideRetrofit(): Retrofit {
+
+fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
     lateinit var retrofit: Retrofit
     val httpClient = OkHttpClient.Builder()
-    httpClient.authenticator { _, response ->
-        response.request
-            .newBuilder()
-            .header("Authorization", "Bearer " + ZeventisApplication().getUserToken())
-            .build()
-    }
 
     addLoggingInterceptor(httpClient)
+    addAuthInterceptor(httpClient, authInterceptor)
 
     retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.FLAVOR)
+        .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .client(httpClient.build())
         .build()
@@ -35,4 +29,8 @@ fun provideRetrofit(): Retrofit {
 
 private fun addLoggingInterceptor(client: OkHttpClient.Builder) {
     client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+}
+
+private fun addAuthInterceptor(client: OkHttpClient.Builder, authInterceptor: AuthInterceptor) {
+    client.addInterceptor(authInterceptor)
 }
