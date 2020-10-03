@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.zeventis.managerapp.R
+import br.com.zeventis.managerapp.domain.exception.SessionExpiredException
 import java.net.UnknownHostException
 
 abstract class BaseFragment : Fragment() {
@@ -33,6 +34,7 @@ abstract class BaseFragment : Fragment() {
         //TODO Handle all errors exception
         when (error) {
             is UnknownHostException -> getString(R.string.generic_server_down)
+            is SessionExpiredException -> SessionExpiredException().localizedMessage // TODO Redirect user to login screen
             else -> error.message!!
         }.apply {
             Log.e(tag, this)

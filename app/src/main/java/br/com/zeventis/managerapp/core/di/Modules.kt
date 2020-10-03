@@ -10,12 +10,14 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
+
+// TODO Config koinScope at all modules using initializer's
 val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
 }
 
 val repositoryModule = module {
-    single<ILoginRepository> { LoginRepository(androidContext()) }
+    single<ILoginRepository> { LoginRepository(androidContext(), get()) }
 }
 
 val apiModule = module {

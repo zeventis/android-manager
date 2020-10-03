@@ -14,7 +14,14 @@ class LoginFragment : BaseFragment() {
     override fun getContentLayoutId(): Int = R.layout.fragment_login
 
     override fun init() {
-        loginViewModel.doLogin(Login("teste", "testeSenha")) // TODO User edittext fields
+        loginFragmentLoginBtn.setOnClickListener {
+            loginViewModel.doLogin(
+                Login(
+                    "teste",
+                    "testeSenha"
+                )
+            )
+        } // TODO User edittext fields
     }
 
     override fun observeViewModelEvents() {

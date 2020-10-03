@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Zeventis</string>
-
     <string name="generic_server_down">Serviços temporariamente indisponíveis</string>
     <string name="generic_error_toast">Erro</string>
 </resources>

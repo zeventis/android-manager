@@ -7,11 +7,13 @@ import br.com.zeventis.managerapp.presentation.model.User
 object UserMapper : BaseMapper<User, UserModel>() {
     override fun transformFrom(s: UserModel): User = User(
         id = s.id,
-        name = s.name
+        name = s.name,
+        token = s.token
     )
 
     override fun transformTo(s: User): UserModel = UserModel(
         id = s.id,
-        name = s.name
+        name = s.name,
+        token = s.token
     )
 }

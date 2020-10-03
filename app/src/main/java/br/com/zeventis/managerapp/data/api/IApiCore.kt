@@ -5,7 +5,7 @@ import br.com.zeventis.managerapp.data.model.UserResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface IApiService {
-    @POST("/login")
+interface IApiCore {
+    @POST("/authentication")
     suspend fun doLogin(@Body loginRequest: LoginRequest): UserResponse
 }

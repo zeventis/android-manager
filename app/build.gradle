@@ -13,18 +13,52 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            buildConfigField("String", "BASE_URL", "")
+            resValue "string", "app_name", "Eventis - Debug"
+            applicationIdSuffix ".dev"
+            versionNameSuffix '-dev'
+            dimension "version"
+            versionCode 1
+            versionName "1.0"
+        }
+        hml {
+            buildConfigField("String", "BASE_URL", "URL_HEROKU")
+            resValue "string", "app_name", "Eventis - HML"
+            applicationIdSuffix ".hml"
+            versionNameSuffix '-hml'
+            dimension "version"
+            versionCode 1
+            versionName "1.0"
+        }
+        production {
+            buildConfigField("String", "BASE_URL", "URL_AWS")
+            resValue "string", "app_name", "Eventis"
+            applicationIdSuffix ".production"
+            versionNameSuffix '-production'
+            dimension "version"
+            versionCode 1
+            versionName "1.0"
+        }
+    }
+
+
     defaultConfig {
         applicationId "br.com.zeventis.managerapp"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            buildConfigField("String", "BASE_URL", "")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
