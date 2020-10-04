@@ -15,11 +15,9 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun getContentLayoutId(): Int
     protected abstract fun init()
-    protected abstract fun observeViewModelEvents()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeViewModelEvents()
         init()
     }
 

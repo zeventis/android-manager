@@ -13,7 +13,7 @@ class MainActivity : BaseActivity() {
 
     private fun startFragment() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.mainActivityNavControllerFl, IntroFragment.newInstance())
+            .add(R.id.mainActivityFl, IntroFragment.newInstance())
             .commit()
     }
 }

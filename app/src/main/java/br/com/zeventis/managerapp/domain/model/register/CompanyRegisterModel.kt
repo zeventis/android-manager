@@ -1,13 +1,13 @@
-package br.com.zeventis.managerapp.presentation.model
+package br.com.zeventis.managerapp.domain.model.register
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Company(
+data class CompanyRegisterModel(
     val name: String,
-    val cep: String,
     val phone: String,
+    val cep: String,
     val addressComplement: String,
-    val addressNumber: String
+    val addressNumber: String,
 ) : Parcelable

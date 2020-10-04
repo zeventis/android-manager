@@ -21,9 +21,6 @@ class HomeFragment : BaseFragment() {
             getString(R.string.home_user_logged, sessionManager.getTwoFirstNameUser())
     }
 
-    override fun observeViewModelEvents() {
-    }
-
     companion object {
         fun newInstance() = HomeFragment()
     }

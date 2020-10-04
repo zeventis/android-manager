@@ -1,11 +1,11 @@
 package br.com.zeventis.managerapp.data.mapper.login
 
 import br.com.zeventis.managerapp.core.plataform.BaseMapper
-import br.com.zeventis.managerapp.data.model.authentication.CompanyResponse
-import br.com.zeventis.managerapp.domain.model.authentication.CompanyModel
+import br.com.zeventis.managerapp.data.model.authentication.CompanyLoginResponse
+import br.com.zeventis.managerapp.domain.model.authentication.CompanyLoginModel
 
-object CompanyMapper : BaseMapper<CompanyResponse, CompanyModel>() {
-    override fun transformFrom(s: CompanyModel): CompanyResponse = CompanyResponse(
+object CompanyMapper : BaseMapper<CompanyLoginResponse, CompanyLoginModel>() {
+    override fun transformFrom(s: CompanyLoginModel): CompanyLoginResponse = CompanyLoginResponse(
         name = s.name,
         cep = s.cep,
         phone = s.phone,
@@ -13,8 +13,7 @@ object CompanyMapper : BaseMapper<CompanyResponse, CompanyModel>() {
         addressNumber = s.addressNumber
     )
 
-
-    override fun transformTo(s: CompanyResponse): CompanyModel = CompanyModel(
+    override fun transformTo(s: CompanyLoginResponse): CompanyLoginModel = CompanyLoginModel(
         name = s.name,
         cep = s.cep,
         phone = s.phone,

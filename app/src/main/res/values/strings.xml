@@ -3,5 +3,11 @@
     <string name="generic_error_toast">Erro</string>
 
 
+    <!-- Login -->
     <string name="home_user_logged">Olá, %s</string>
+
+    <!-- Register -->
+    <string name="register_get_started">Para começar,\n\nnos informe seus dados pessoais</string>
+    <string name="register_company_infos">Agora informe sua empresa</string>
+    <string name="register_user_infos">Por último escolha seu usuário e senha</string>
 </resources>

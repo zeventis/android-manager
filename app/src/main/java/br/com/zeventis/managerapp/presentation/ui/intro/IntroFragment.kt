@@ -1,8 +1,10 @@
 package br.com.zeventis.managerapp.presentation.ui.intro
 
+import android.content.Intent
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
-import br.com.zeventis.managerapp.presentation.ui.login.LoginFragment
+import br.com.zeventis.managerapp.presentation.ui.login.LoginActivity
+import br.com.zeventis.managerapp.presentation.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.fragment_intro.*
 
 class IntroFragment : BaseFragment() {
@@ -14,20 +16,12 @@ class IntroFragment : BaseFragment() {
 
     private fun initSetClickListeners() {
         introFragmentLoginBt.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(
-                    R.id.mainActivityNavControllerFl,
-                    LoginFragment.newInstance(),
-                    LoginFragment.newInstance().javaClass.simpleName
-                )?.commit()
+            startActivity(Intent(activity, LoginActivity::class.java))
         }
-        introFragmentRegisterBt.setOnClickListener {
-            // TODO Call Promoter login fragment
-        }
-    }
 
-    override fun observeViewModelEvents() {
-        // TODO Don't have implementation
+        introFragmentRegisterBt.setOnClickListener {
+            startActivity(Intent(activity, RegisterActivity::class.java))
+        }
     }
 
     companion object {

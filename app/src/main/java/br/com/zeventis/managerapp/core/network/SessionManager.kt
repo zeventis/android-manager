@@ -3,7 +3,8 @@ package br.com.zeventis.managerapp.core.network
 import android.content.Context
 import android.content.SharedPreferences
 import br.com.zeventis.managerapp.R
-import br.com.zeventis.managerapp.presentation.model.User
+import br.com.zeventis.managerapp.core.utils.Constants.SharedPreferences.USER
+import br.com.zeventis.managerapp.presentation.model.login.User
 import com.google.gson.Gson
 
 class SessionManager(context: Context) {
@@ -42,7 +43,4 @@ class SessionManager(context: Context) {
         return name
     }
 
-    companion object {
-        const val USER = "user"
-    }
 }

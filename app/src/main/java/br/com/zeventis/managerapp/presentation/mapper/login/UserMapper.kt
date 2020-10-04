@@ -2,7 +2,7 @@ package br.com.zeventis.managerapp.presentation.mapper.login
 
 import br.com.zeventis.managerapp.core.plataform.BaseMapper
 import br.com.zeventis.managerapp.domain.model.authentication.UserModel
-import br.com.zeventis.managerapp.presentation.model.User
+import br.com.zeventis.managerapp.presentation.model.login.User
 
 object UserMapper : BaseMapper<User, UserModel>() {
     override fun transformFrom(s: UserModel): User = User(
@@ -13,7 +13,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         birthdayDate = s.birthdayDate,
         phone = s.phone,
         city = s.city,
-        company = CompanyMapper.transformFrom(s.company),
+        company = CompanyLoginMapper.transformFrom(s.company),
         state = s.state
     )
 
@@ -25,7 +25,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         birthdayDate = s.birthdayDate,
         phone = s.phone,
         city = s.city,
-        company = CompanyMapper.transformTo(s.company),
+        company = CompanyLoginMapper.transformTo(s.company),
         state = s.state
     )
 }

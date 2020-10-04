@@ -1,9 +1,10 @@
 package br.com.zeventis.managerapp.presentation.ui.login
 
+import android.content.Intent
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
-import br.com.zeventis.managerapp.presentation.model.Login
-import br.com.zeventis.managerapp.presentation.ui.home.HomeFragment
+import br.com.zeventis.managerapp.presentation.model.login.Login
+import br.com.zeventis.managerapp.presentation.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 
@@ -14,6 +15,7 @@ class LoginFragment : BaseFragment() {
     override fun getContentLayoutId(): Int = R.layout.fragment_login
 
     override fun init() {
+        observeViewModelEvents()
         initOnClickListeners()
     }
 
@@ -30,7 +32,7 @@ class LoginFragment : BaseFragment() {
         loginFragmentBackBt.setOnClickListener { activity?.onBackPressed() }
     }
 
-    override fun observeViewModelEvents() {
+    private fun observeViewModelEvents() {
         loginViewModel.viewState.observe(viewLifecycleOwner, {
             when (it) {
                 is LoginViewEvents.OnLoginSuccess -> handleLoginSuccess()
@@ -43,12 +45,8 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun handleLoginSuccess() {
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(
-                R.id.mainActivityNavControllerFl,
-                HomeFragment.newInstance(),
-                HomeFragment.newInstance().javaClass.simpleName
-            )?.commit()
+        startActivity(Intent(activity, HomeActivity::class.java))
+        activity?.finish()
     }
 
     companion object {
