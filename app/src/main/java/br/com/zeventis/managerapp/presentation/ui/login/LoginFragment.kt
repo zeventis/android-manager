@@ -2,27 +2,32 @@ package br.com.zeventis.managerapp.presentation.ui.login
 
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
-import br.com.zeventis.managerapp.core.network.SessionManager
 import br.com.zeventis.managerapp.presentation.model.Login
+import br.com.zeventis.managerapp.presentation.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 
 class LoginFragment : BaseFragment() {
 
     private val loginViewModel: LoginViewModel by inject()
-    private val sessionManager: SessionManager by inject()
 
     override fun getContentLayoutId(): Int = R.layout.fragment_login
 
     override fun init() {
+        initOnClickListeners()
+    }
+
+    private fun initOnClickListeners() {
         loginFragmentLoginBtn.setOnClickListener {
             loginViewModel.doLogin(
                 Login(
-                    loginFragmentUserEt.text.toString(),
+                    loginFragmentUserEl.editText?.text.toString(),
                     loginFragmentPasswordIl.editText?.text.toString()
                 )
             )
         }
+
+        loginFragmentBackBt.setOnClickListener { activity?.onBackPressed() }
     }
 
     override fun observeViewModelEvents() {
@@ -38,9 +43,12 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun handleLoginSuccess() {
-        val user = sessionManager.getUser()
-        loginFragmentLoginDataTv.text = user.toString()
-        //TODO Do login action after backend service implementation
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(
+                R.id.mainActivityNavControllerFl,
+                HomeFragment.newInstance(),
+                HomeFragment.newInstance().javaClass.simpleName
+            )?.commit()
     }
 
     companion object {

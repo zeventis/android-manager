@@ -13,7 +13,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         birthdayDate = s.birthdayDate,
         phone = s.phone,
         city = s.city,
-        producer = ProducerMapper.transformFrom(s.producer),
+        company = CompanyMapper.transformFrom(s.company),
         state = s.state
     )
 
@@ -25,7 +25,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         birthdayDate = s.birthdayDate,
         phone = s.phone,
         city = s.city,
-        producer = ProducerMapper.transformTo(s.producer),
+        company = CompanyMapper.transformTo(s.company),
         state = s.state
     )
 }

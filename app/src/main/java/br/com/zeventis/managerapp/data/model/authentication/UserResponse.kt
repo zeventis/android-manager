@@ -14,5 +14,5 @@ data class UserResponse(
     @SerializedName("state") val state: String,
     @SerializedName("city") val city: String,
     @SerializedName("token") val token: String,
-    @SerializedName("producer") val producer: ProducerResponse,
+    @SerializedName("company") val company: CompanyResponse,
 ) : Parcelable

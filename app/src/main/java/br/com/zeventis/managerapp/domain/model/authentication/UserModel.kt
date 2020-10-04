@@ -13,5 +13,5 @@ data class UserModel(
     val state: String,
     val city: String,
     val token: String,
-    val producer: ProducerModel,
+    val company: CompanyModel,
 ) : Parcelable

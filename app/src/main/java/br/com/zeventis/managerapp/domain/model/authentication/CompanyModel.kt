@@ -4,7 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProducerModel(
+data class CompanyModel(
+        val name: String,
         val cep: String,
         val phone: String,
         val addressComplement: String,

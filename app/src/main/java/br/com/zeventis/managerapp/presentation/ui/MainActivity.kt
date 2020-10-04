@@ -2,9 +2,10 @@ package br.com.zeventis.managerapp.presentation.ui
 
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseActivity
-import br.com.zeventis.managerapp.presentation.ui.login.LoginFragment
+import br.com.zeventis.managerapp.presentation.ui.intro.IntroFragment
 
 class MainActivity : BaseActivity() {
+
     override fun init() {
         setContentView(R.layout.activity_main)
         startFragment()
@@ -12,11 +13,7 @@ class MainActivity : BaseActivity() {
 
     private fun startFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.mainActivityContainerFl,
-                LoginFragment.newInstance(),
-                LoginFragment.newInstance().javaClass.simpleName
-            )
+            .add(R.id.mainActivityNavControllerFl, IntroFragment.newInstance())
             .commit()
     }
 }

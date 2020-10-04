@@ -3,7 +3,6 @@ package br.com.zeventis.managerapp.core.network
 import android.content.Context
 import android.content.SharedPreferences
 import br.com.zeventis.managerapp.R
-import br.com.zeventis.managerapp.presentation.model.Producer
 import br.com.zeventis.managerapp.presentation.model.User
 import com.google.gson.Gson
 
@@ -11,12 +10,10 @@ class SessionManager(context: Context) {
     private var sharedPreferences: SharedPreferences =
         context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
 
-    companion object {
-        const val USER = "user"
-    }
-
     /**
-     * Function to save user
+     * Function to save user session
+     *
+     * @param user usuer to save on session
      */
     fun saveUser(user: User) {
         val editor = sharedPreferences.edit()
@@ -25,13 +22,27 @@ class SessionManager(context: Context) {
     }
 
     /**
-     * Function to get user
+     * Function to get user session
      *
-     * @return user logged instance or default user with
+     * @return user logged instance
      */
-    fun getUser(): User {
-        val defaultUser = User("", "", "", "", "", "", "", "", Producer("", "", "", ""))
-        val getUserJson = Gson().fromJson(sharedPreferences.getString(USER, null), User::class.java)
-        return getUserJson ?: defaultUser
+    fun getUser(): User? {
+        return Gson().fromJson(sharedPreferences.getString(USER, null), User::class.java)
+    }
+
+    fun getTwoFirstNameUser(): String? {
+        var name = getUser()?.name
+
+        val spitedName = getUser()?.name?.split(" ")
+
+        if (spitedName != null && spitedName.size > 1) {
+            name = "${spitedName[0]} ${spitedName[1]}"
+        }
+
+        return name
+    }
+
+    companion object {
+        const val USER = "user"
     }
 }

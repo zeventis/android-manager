@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProducerResponse(
+data class CompanyResponse(
+        @SerializedName("name") val name: String,
         @SerializedName("cep") val cep: String,
         @SerializedName("phone") val phone: String,
         @SerializedName("addressComplement") val addressComplement: String,

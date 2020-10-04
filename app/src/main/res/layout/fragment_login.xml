@@ -2,72 +2,121 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <!-- TODO: Configure login fragment -->
-    <EditText
-        android:id="@+id/loginFragmentUserEt"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/loginFragmentTitleGl"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Usuário"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.525" />
+
+    <ImageView
+        android:id="@+id/loginFragmentBackgroundTitleIv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/background_login_blue"
+        app:layout_constraintBottom_toTopOf="@id/loginFragmentTitleGl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginFragmentTitleTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Olá, bem-vindx de volta :)"
+        android:textColor="@android:color/white"
+        android:textSize="38sp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginFragmentBackgroundTitleIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/loginFragmentBackBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginFragmentUserEl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Usuário"
+        android:textColorHint="@color/colorBluePrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFragmentBackgroundTitleIv">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textCapWords"
+            android:maxLines="1"
+            android:text="zeventis"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginFragmentPasswordIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/black"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginFragmentUserEt"
-        app:passwordToggleEnabled="true">
+        app:layout_constraintTop_toBottomOf="@+id/loginFragmentUserEl"
+        app:layout_constraintVertical_bias="0.497"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorBluePrincipal">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:text="123456"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
-    <TextView
-        android:id="@+id/loginFragmentLoginDataTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Login data"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginFragmentLoginBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginFragmentPasswordIl" />
 
     <Button
         android:id="@+id/loginFragmentLoginBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        android:text="Login"
-        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/white_rounded_button"
+        android:text="login"
+        android:textAllCaps="true"
+        android:textColor="@color/colorBluePrincipal"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFragmentPasswordIl"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

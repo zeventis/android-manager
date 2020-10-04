@@ -1,4 +1,7 @@
 <resources>
     <string name="generic_server_down">Serviços temporariamente indisponíveis</string>
     <string name="generic_error_toast">Erro</string>
+
+
+    <string name="home_user_logged">Olá, %s</string>
 </resources>

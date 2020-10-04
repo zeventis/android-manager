@@ -1,11 +1,12 @@
 package br.com.zeventis.managerapp.presentation.mapper.login
 
 import br.com.zeventis.managerapp.core.plataform.BaseMapper
-import br.com.zeventis.managerapp.domain.model.authentication.ProducerModel
-import br.com.zeventis.managerapp.presentation.model.Producer
+import br.com.zeventis.managerapp.domain.model.authentication.CompanyModel
+import br.com.zeventis.managerapp.presentation.model.Company
 
-object ProducerMapper : BaseMapper<Producer, ProducerModel>() {
-    override fun transformFrom(s: ProducerModel): Producer = Producer(
+object CompanyMapper : BaseMapper<Company, CompanyModel>() {
+    override fun transformFrom(s: CompanyModel): Company = Company(
+        name = s.name,
         cep = s.cep,
         phone = s.phone,
         addressComplement = s.addressComplement,
@@ -13,7 +14,8 @@ object ProducerMapper : BaseMapper<Producer, ProducerModel>() {
     )
 
 
-    override fun transformTo(s: Producer): ProducerModel = ProducerModel(
+    override fun transformTo(s: Company): CompanyModel = CompanyModel(
+        name = s.name,
         cep = s.cep,
         phone = s.phone,
         addressComplement = s.addressComplement,

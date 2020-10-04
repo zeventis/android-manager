@@ -21,6 +21,8 @@ ext {
     CardViewVersion = '1.0.0'
     LegacySupportVersion = '1.0.0'
     MaterialVersion = '1.2.1'
+    NavigationVersion = '2.3.0'
+    customEditTextVersion = '1.0.6'
 
     KoinVersion = '1.0.1'
 
@@ -48,17 +50,19 @@ ext {
     ]
 
     viewDependencies = [
-            appcompat        : "androidx.appcompat:appcompat:$AppCompatVersion",
-            constraintLayout : "androidx.constraintlayout:constraintlayout:$ConstraintLayoutVersion",
-            recyclerView     : "androidx.recyclerview:recyclerview:$RecyclerViewVersion",
-            lifecycle        : "android.arch.lifecycle:extensions:$LifeCycleVersion",
-            lifecycleCompiler: "android.arch.lifecycle:compiler:$LifeCycleVersion",
-            cardView         : "androidx.cardview:cardview:$CardViewVersion",
-            legacySupport    : "androidx.legacy:legacy-support-v4:$LegacySupportVersion",
-            sneaker          : "com.irozon.sneaker:sneaker:$SneakerVersion",
-            glide            : "com.github.bumptech.glide:glide:$GlideVersion",
-            glideCompiler    : "com.github.bumptech.glide:compiler:$GlideVersion",
-            material         : "com.google.android.material:material:$MaterialVersion"
+            appcompat           : "androidx.appcompat:appcompat:$AppCompatVersion",
+            constraintLayout    : "androidx.constraintlayout:constraintlayout:$ConstraintLayoutVersion",
+            recyclerView        : "androidx.recyclerview:recyclerview:$RecyclerViewVersion",
+            lifecycle           : "android.arch.lifecycle:extensions:$LifeCycleVersion",
+            lifecycleCompiler   : "android.arch.lifecycle:compiler:$LifeCycleVersion",
+            cardView            : "androidx.cardview:cardview:$CardViewVersion",
+            legacySupport       : "androidx.legacy:legacy-support-v4:$LegacySupportVersion",
+            sneaker             : "com.irozon.sneaker:sneaker:$SneakerVersion",
+            glide               : "com.github.bumptech.glide:glide:$GlideVersion",
+            glideCompiler       : "com.github.bumptech.glide:compiler:$GlideVersion",
+            material            : "com.google.android.material:material:$MaterialVersion",
+            navigationFragment  : "androidx.navigation:navigation-fragment-ktx:$NavigationVersion",
+            navigationUi        : "androidx.navigation:navigation-ui-ktx:$NavigationVersion",
     ]
 
     otherDependencies = [

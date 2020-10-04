@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.domain.exception.SessionExpiredException
+import com.irozon.sneaker.Sneaker
 import java.net.UnknownHostException
 
 abstract class BaseFragment : Fragment() {
@@ -32,9 +33,19 @@ abstract class BaseFragment : Fragment() {
 
     protected fun handleError(tag: String, error: Throwable) {
         //TODO Handle all errors exception
+        if (activity != null && error == SessionExpiredException()) { // TODO Redirect user to login screen
+            Sneaker.with(requireActivity())
+                .setTitle("Erro")
+                .setMessage(SessionExpiredException().message.toString())
+                .setCornerRadius(1)
+                .setDuration(3000)
+                .autoHide(true)
+                .sneakError()
+        }
+
         when (error) {
             is UnknownHostException -> getString(R.string.generic_server_down)
-            is SessionExpiredException -> SessionExpiredException().localizedMessage // TODO Redirect user to login screen
+            is SessionExpiredException -> SessionExpiredException().localizedMessage
             else -> error.message!!
         }.apply {
             Log.e(tag, this)

@@ -6,12 +6,12 @@ import br.com.zeventis.managerapp.presentation.model.Login
 
 object LoginMapper : BaseMapper<LoginModel, Login>() {
     override fun transformFrom(s: Login): LoginModel = LoginModel(
-        user = s.user,
+        username = s.username,
         password = s.password
     )
 
     override fun transformTo(s: LoginModel): Login = Login(
-        user = s.user,
+        username = s.username,
         password = s.password
     )
 }

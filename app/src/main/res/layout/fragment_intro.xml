@@ -4,16 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBluePrincipal"
     tools:context=".presentation.ui.intro.IntroFragment">
 
-    <!-- TODO Make intro layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Introdução do app"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/introFragmentIconIV"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="72dp"
+        android:src="@drawable/ic_inovacao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/introFragmentTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.07"
+        android:text="ZEVENTIS"
+        android:textColor="@android:color/white"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/introFragmentIconIV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="event management"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/introFragmentLoginBt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/introFragmentTitleTv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/introFragmentLoginBt"
+        style="@style/customButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/primary_rounded_button"
+        android:text="login"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/introFragmentRegisterBt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/introFragmentRegisterBt"
+        style="@style/customButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/white_rounded_button"
+        android:text="registro"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

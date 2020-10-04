@@ -43,7 +43,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField("String", "BASE_URL", '"https://5f77d1acd5c9cb001623777e.mockapi.io/"')
+            buildConfigField("String", "BASE_URL", '"http://localhost:3000/"')
             resValue "string", "app_name", "Eventis - Debug"
             applicationIdSuffix ".dev"
             versionNameSuffix '-dev'
@@ -81,7 +81,6 @@ dependencies {
     implementation otherDependencies.coreKtx
 
     // View Dependencies
-    kapt viewDependencies.lifecycleCompiler
     implementation viewDependencies.appcompat
     implementation viewDependencies.lifecycle
     implementation viewDependencies.constraintLayout
@@ -89,6 +88,10 @@ dependencies {
     implementation viewDependencies.material
     implementation viewDependencies.legacySupport
     implementation viewDependencies.glide
+    implementation viewDependencies.sneaker
+    implementation viewDependencies.navigationFragment
+    implementation viewDependencies.navigationUi
+    kapt viewDependencies.lifecycleCompiler
     kapt viewDependencies.glideCompiler
 
     // Test Dependencies

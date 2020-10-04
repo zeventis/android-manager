@@ -13,5 +13,5 @@ data class User(
     val state: String,
     val city: String,
     val token: String,
-    val producer: Producer,
+    val company: Company,
 ) : Parcelable
