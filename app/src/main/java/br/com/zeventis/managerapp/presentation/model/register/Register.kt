@@ -5,14 +5,15 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Register(
-    val name: String,
-    val city: String,
-    val email: String,
-    val birthdayDate: String,
-    val password: String,
-    val phone: String,
-    val profile: Int,
-    val state: String,
-    val username: String,
-    val company: Company,
+    var name: String = "",
+    var city: String = "",
+    var email: String = "",
+    var birthdayDate: String = "",
+    var password: String = "",
+    var phone: String = "",
+    var profile: String = "1",
+    var state: String= "",
+    var username: String = "",
+    var gender: String = "",
+    var company: Company = Company(),
 ) : Parcelable

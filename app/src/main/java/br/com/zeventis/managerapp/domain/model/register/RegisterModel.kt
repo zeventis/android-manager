@@ -11,8 +11,9 @@ data class RegisterModel(
     val birthdayDate: String,
     val password: String,
     val phone: String,
-    val profile: Int,
+    val profile: String,
     val state: String,
     val username: String,
+    val gender: String,
     val company: CompanyRegisterModel,
 ) : Parcelable

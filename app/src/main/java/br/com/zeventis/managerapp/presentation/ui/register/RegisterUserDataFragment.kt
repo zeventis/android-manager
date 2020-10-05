@@ -1,14 +1,17 @@
 package br.com.zeventis.managerapp.presentation.ui.register
 
 import android.content.Intent
+import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.RegisterManager
-import br.com.zeventis.managerapp.domain.exception.SessionExpiredException
 import br.com.zeventis.managerapp.presentation.ui.home.HomeActivity
 import com.irozon.sneaker.Sneaker
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_register_user_data.*
 import org.koin.android.ext.android.inject
+
 
 class RegisterUserDataFragment : BaseFragment() {
 
@@ -22,11 +25,18 @@ class RegisterUserDataFragment : BaseFragment() {
         initOnClickListeners()
     }
 
+    private fun updateRegisterSingleton() {
+        val registerTemp = registerManager.getRegister()
+        registerTemp.username = registerFragmentUsernameEl.editText?.text.toString()
+        registerTemp.email = registerFragmentEmailEl.editText?.text.toString()
+        registerTemp.password = registerFragmentPasswordIl.editText?.text.toString()
+        registerManager.saveRegister(registerTemp)
+    }
+
     private fun initOnClickListeners() {
         registerFragmentDoneBtn.setOnClickListener {
-            registerManager.getRegister()?.let { register ->
-                registerViewModel.register(register)
-            }
+            updateRegisterSingleton()
+            registerViewModel.register(registerManager.getRegister())
         }
     }
 
@@ -35,7 +45,7 @@ class RegisterUserDataFragment : BaseFragment() {
             when (it) {
                 is RegisterViewEvents.OnRegisterSuccess -> handleRegisterSuccess()
                 is RegisterViewEvents.OnRegisterFailed -> handleError(
-                    RegisterFragment::class.java.toString(),
+                    RegisterUserDataFragment::class.java.toString(),
                     it.exceptionError
                 )
             }
@@ -51,9 +61,9 @@ class RegisterUserDataFragment : BaseFragment() {
             .autoHide(true)
             .sneakSuccess()
         startActivity(Intent(activity, HomeActivity::class.java))
+        registerManager.clearRegister()
         activity?.finish()
     }
-
 
     companion object {
         fun newInstance() = RegisterUserDataFragment()

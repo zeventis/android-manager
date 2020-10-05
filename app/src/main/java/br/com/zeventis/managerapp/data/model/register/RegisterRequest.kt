@@ -12,8 +12,9 @@ data class RegisterRequest(
     @SerializedName("birthdayDate") val birthdayDate: String,
     @SerializedName("password") val password: String,
     @SerializedName("phone") val phone: String,
-    @SerializedName("profile") val profile: Int,
+    @SerializedName("profile") val profile: String,
     @SerializedName("state") val state: String,
     @SerializedName("username") val username: String,
+    @SerializedName("gender") val gender: String,
     @SerializedName("company") val company: CompanyRegisterRequest,
 ) : Parcelable

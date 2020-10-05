@@ -2,11 +2,15 @@ package br.com.zeventis.managerapp.presentation.ui.register
 
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
+import br.com.zeventis.managerapp.core.utils.RegisterManager
+import br.com.zeventis.managerapp.presentation.model.register.Company
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_register_company_data.*
-import kotlinx.android.synthetic.main.fragment_register_personal_data.*
-import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNext2Btn
+import org.koin.android.ext.android.inject
 
 class RegisterCompanyDataFragment : BaseFragment() {
+
+    private val registerManager: RegisterManager by inject()
 
     override fun getContentLayoutId(): Int = R.layout.fragment_register_company_data
 
@@ -15,9 +19,30 @@ class RegisterCompanyDataFragment : BaseFragment() {
     }
 
     private fun initOnClickListeners() {
-        registerFragmentNextBtn.setOnClickListener {
-            // TODO Implements action change View Pager and change text
-        }
+        registerFragmentNextBtn.setOnClickListener { handleNextButton() }
+    }
+
+    private fun handleNextButton() {
+        startNextRegisterFragment()
+        updateRegisterSingleton()
+    }
+
+    private fun startNextRegisterFragment() {
+        val activity = activity as RegisterActivity
+        activity.registerFragmentRegisterStepVp.currentItem = 2
+    }
+
+    private fun updateRegisterSingleton() {
+        val registerTemp = registerManager.getRegister()
+        val companyTemp = Company()
+        companyTemp.name = registerFragmentCompanyNameEl.editText?.text.toString()
+        companyTemp.phone = registerFragmentPhoneCompanyEl.editText?.text.toString()
+        companyTemp.cep = registerFragmentCepIl.editText?.text.toString()
+        companyTemp.addressNumber = registerFragmentAddressNumberIl.editText?.text.toString()
+        companyTemp.addressComplement =
+            registerFragmentAddressComplementIl.editText?.text.toString()
+        registerTemp.company = companyTemp
+        registerManager.saveRegister(registerTemp)
     }
 
     companion object {

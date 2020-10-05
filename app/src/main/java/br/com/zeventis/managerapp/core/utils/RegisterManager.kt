@@ -27,9 +27,9 @@ class RegisterManager(context: Context) {
      *
      * @return register cache
      */
-    fun getRegister(): Register? {
-        return Gson().fromJson(sharedPreferences.getString(REGISTER, null), Register::class.java)
-    }
+    fun getRegister(): Register =
+        Gson().fromJson(sharedPreferences.getString(REGISTER, null), Register::class.java)
+            ?: Register()
 
 
     /**

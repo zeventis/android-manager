@@ -39,6 +39,14 @@ abstract class BaseFragment : Fragment() {
                 .setDuration(3000)
                 .autoHide(true)
                 .sneakError()
+        } else if (activity != null) {
+            Sneaker.with(requireActivity())
+                .setTitle("Erro")
+                .setMessage(error.message.toString())
+                .setCornerRadius(1)
+                .setDuration(3000)
+                .autoHide(true)
+                .sneakError()
         }
 
         when (error) {

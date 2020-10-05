@@ -3,7 +3,6 @@ package br.com.zeventis.managerapp.data.mapper.register
 import br.com.zeventis.managerapp.core.plataform.BaseMapper
 import br.com.zeventis.managerapp.data.model.register.RegisterRequest
 import br.com.zeventis.managerapp.domain.model.register.RegisterModel
-import br.com.zeventis.managerapp.presentation.model.register.Register
 
 object RegisterMapper : BaseMapper<RegisterRequest, RegisterModel>() {
     override fun transformFrom(s: RegisterModel): RegisterRequest = RegisterRequest(
@@ -16,6 +15,7 @@ object RegisterMapper : BaseMapper<RegisterRequest, RegisterModel>() {
         profile = s.profile,
         state = s.state,
         username = s.username,
+        gender = s.gender,
         company = CompanyRegisterMapper.transformFrom(s.company)
     )
 
@@ -29,6 +29,7 @@ object RegisterMapper : BaseMapper<RegisterRequest, RegisterModel>() {
         profile = s.profile,
         state = s.state,
         username = s.username,
+        gender = s.gender,
         company = CompanyRegisterMapper.transformTo(s.company)
     )
 }
