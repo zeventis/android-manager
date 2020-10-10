@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.com.zeventis.managerapp.R
-import br.com.zeventis.managerapp.domain.exception.SessionExpiredException
 import com.irozon.sneaker.Sneaker
+import java.io.IOException
 import java.net.UnknownHostException
+import retrofit2.HttpException
+import retrofit2.Response
 
 abstract class BaseFragment : Fragment() {
 
@@ -30,31 +31,74 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected fun handleError(tag: String, error: Throwable) {
-        //TODO Handle all errors exception
-        if (activity != null && error == SessionExpiredException()) { // TODO Redirect user to login screen
-            Sneaker.with(requireActivity())
-                .setTitle("Erro")
-                .setMessage(SessionExpiredException().message.toString())
-                .setCornerRadius(1)
-                .setDuration(3000)
-                .autoHide(true)
-                .sneakError()
-        } else if (activity != null) {
-            Sneaker.with(requireActivity())
-                .setTitle("Erro")
-                .setMessage(error.message.toString())
-                .setCornerRadius(1)
-                .setDuration(3000)
-                .autoHide(true)
-                .sneakError()
-        }
+        Log.e(tag, error.toString())
 
         when (error) {
-            is UnknownHostException -> getString(R.string.generic_server_down)
-            is SessionExpiredException -> SessionExpiredException().localizedMessage
-            else -> error.message!!
-        }.apply {
-            Log.e(tag, this)
+            is UnknownHostException -> handleServerDown(tag)
+            is IOException -> handleNetworkError(tag)
+            is HttpException -> handleHttpException(tag, error)
+            else -> handleGenericException(error)
         }
+    }
+
+    private fun handleHttpException(tag: String, error: HttpException) {
+        when (error.code()) {
+            401 -> handleUnauthorized(tag)
+            500 -> handleBackendError(tag, error.response())
+            else -> handleGenericCode(error)
+        }
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleServerDown(tag: String) {
+        Log.e(tag, "SERVER-DOWN-ERROR")
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleGenericException(error: Throwable) {
+        Sneaker.with(requireActivity())
+            .setTitle("Erro")
+            .setMessage(error.message.toString())
+            .setCornerRadius(64, 32)
+            .setDuration(10000)
+            .autoHide(true)
+            .sneakError()
+        Log.e("GENERIC-ERROR", error.toString())
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleNetworkError(tag: String) {
+        Log.e(tag, "NETWORK-ERROR")
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleGenericCode(error: HttpException) {
+        Sneaker.with(requireActivity())
+            .setTitle("Erro")
+            .setMessage(error.message.toString())
+            .setCornerRadius(64, 32)
+            .setDuration(10000)
+            .autoHide(true)
+            .sneakError()
+        Log.e("GENERIC-CODE-ERROR", error.toString())
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleBackendError(tag: String, response: Response<*>?) {
+        response?.message()?.let {
+            Sneaker.with(requireActivity())
+                .setTitle("Erro")
+                .setMessage(it)
+                .setCornerRadius(64, 32)
+                .setDuration(10000)
+                .autoHide(true)
+                .sneakError()
+        }
+        Log.e(tag, response.toString())
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleUnauthorized(tag: String) {
+        Log.e(tag, "UNAUTHORIZED-ERROR")
     }
 }

@@ -4,5 +4,6 @@
     <color name="colorAccent">#FFF</color>
 
     <color name="colorBluePrincipal">#0037E2</color>
-    <color name="colorBackgroundSecondary">#2196F3</color>
+    <color name="colorBlueSecondary">#CC0037E2</color>
+    <color name="colorBlueTertiary">#990037E2</color>
 </resources>

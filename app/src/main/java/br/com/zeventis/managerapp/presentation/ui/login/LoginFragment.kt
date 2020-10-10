@@ -3,9 +3,12 @@ package br.com.zeventis.managerapp.presentation.ui.login
 import android.content.Intent
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
-import br.com.zeventis.managerapp.presentation.model.login.Login
+import br.com.zeventis.managerapp.presentation.model.authentication.Login
 import br.com.zeventis.managerapp.presentation.ui.home.HomeActivity
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.loginFragmentBackBt
+import kotlinx.android.synthetic.main.fragment_login.loginFragmentLoginBtn
+import kotlinx.android.synthetic.main.fragment_login.loginFragmentPasswordIl
+import kotlinx.android.synthetic.main.fragment_login.loginFragmentUserIl
 import org.koin.android.ext.android.inject
 
 class LoginFragment : BaseFragment() {
@@ -23,7 +26,7 @@ class LoginFragment : BaseFragment() {
         loginFragmentLoginBtn.setOnClickListener {
             loginViewModel.doLogin(
                 Login(
-                    loginFragmentUserEl.editText?.text.toString(),
+                    loginFragmentUserIl.editText?.text.toString(),
                     loginFragmentPasswordIl.editText?.text.toString()
                 )
             )

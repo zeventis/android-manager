@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/itemEventsEventMonthBackgroundIv"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/background_blue_right_rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemEventsEventMonthTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.04"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintEnd_toEndOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintStart_toStartOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintTop_toTopOf="@id/itemEventsEventMonthBackgroundIv"
+        tools:text="SET/21" />
+
+    <TextView
+        android:id="@+id/itemEventsEventCountEventTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorBlueSecondary"
+        app:layout_constraintBottom_toBottomOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/itemEventsEventMonthBackgroundIv"
+        tools:text="2 eventos" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemEventsListEventRv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_event" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

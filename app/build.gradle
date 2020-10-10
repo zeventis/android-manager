@@ -35,7 +35,7 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "BASE_URL", '"URL_AWS"')
-            resValue "string", "app_name", "Eventis"
+            resValue "string", "app_name", "Zeventis"
             applicationIdSuffix ".production"
             versionNameSuffix '-production'
             signingConfig signingConfigs.release
@@ -44,7 +44,7 @@ android {
         }
         debug {
             buildConfigField("String", "BASE_URL", '"http://localhost:3000/"')
-            resValue "string", "app_name", "Eventis - Debug"
+            resValue "string", "app_name", "Zeventis - Debug"
             applicationIdSuffix ".dev"
             versionNameSuffix '-dev'
             signingConfig signingConfigs.release
@@ -53,7 +53,7 @@ android {
         }
         hml {
             buildConfigField("String", "BASE_URL", '"https://zeventis-core.herokuapp.com/"')
-            resValue "string", "app_name", "Eventis - HML"
+            resValue "string", "app_name", "Zeventis - HML"
             applicationIdSuffix ".hml"
             versionNameSuffix '-hml'
             signingConfig signingConfigs.release

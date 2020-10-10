@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentUserDataRootCl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/fragmentUserDataRootCl"
     android:background="@android:color/white">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentUsernameEl"
+        android:id="@+id/registerFragmentInstagramIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Usuário"
+        android:hint="Instagram *"
         android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="\@gabrielgrs2"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registerFragmentUsernameIl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Usuário *"
+        android:textColorHint="@color/colorBluePrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentInstagramIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -27,15 +48,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentEmailEl"
+        android:id="@+id/registerFragmentEmailIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Email"
+        android:hint="Email *"
         android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentUsernameEl">
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentUsernameIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -52,11 +73,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Senha"
+        android:hint="Senha *"
         android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentEmailEl"
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentEmailIl"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorBluePrincipal">
 

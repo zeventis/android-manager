@@ -16,7 +16,8 @@
         android:id="@+id/loginFragmentBackgroundTitleIv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/background_blue_rounded"
+        android:importantForAccessibility="no"
+        android:src="@drawable/background_blue_bottom_rounded"
         app:layout_constraintBottom_toTopOf="@id/loginFragmentTitleGl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,13 +42,14 @@
         android:id="@+id/loginFragmentBackBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:contentDescription="@string/generic_back_button"
+        android:padding="24dp"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loginFragmentUserEl"
+        android:id="@+id/loginFragmentUserIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -81,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginFragmentUserEl"
+        app:layout_constraintTop_toBottomOf="@+id/loginFragmentUserIl"
         app:layout_constraintVertical_bias="0.497"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorBluePrincipal">

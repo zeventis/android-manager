@@ -3,8 +3,14 @@ package br.com.zeventis.managerapp.presentation.ui.register
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.RegisterManager
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.fragment_register_personal_data.*
+import kotlinx.android.synthetic.main.activity_register.registerFragmentRegisterStepVp
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentBirthdayDateIl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentCityIl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentGenderIl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNameEl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNext2Btn
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentPhoneEl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentStateIl
 import org.koin.android.ext.android.inject
 
 class RegisterPersonalDataFragment : BaseFragment() {

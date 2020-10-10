@@ -16,9 +16,9 @@
 
     <!--    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
 
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
+<!--    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">-->
+<!--        <item name="android:fontFamily">sans-serif-light</item>-->
+<!--    </style>-->
 
     <style name="customButton" parent="Widget.AppCompat.Button">
         <item name="android:textSize">14sp</item>

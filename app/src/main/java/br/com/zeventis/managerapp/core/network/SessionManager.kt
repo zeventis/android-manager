@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.utils.Constants.SharedPreferences.USER
-import br.com.zeventis.managerapp.presentation.model.login.User
+import br.com.zeventis.managerapp.presentation.model.authentication.User
 import com.google.gson.Gson
 
 class SessionManager(context: Context) {

@@ -4,8 +4,13 @@ import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.RegisterManager
 import br.com.zeventis.managerapp.presentation.model.register.Company
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.fragment_register_company_data.*
+import kotlinx.android.synthetic.main.activity_register.registerFragmentRegisterStepVp
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentAddressComplementIl
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentAddressNumberIl
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentCepIl
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentCompanyNameEl
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentNextBtn
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentPhoneCompanyEl
 import org.koin.android.ext.android.inject
 
 class RegisterCompanyDataFragment : BaseFragment() {

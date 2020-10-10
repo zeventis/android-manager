@@ -14,7 +14,10 @@ object UserMapper : BaseMapper<UserResponse, UserModel>() {
         phone = s.phone,
         city = s.city,
         company = CompanyMapper.transformFrom(s.company),
-        state = s.state
+        state = s.state,
+        profile = s.profile,
+        gender = s.gender,
+        instagram = s.instagram
     )
 
     override fun transformTo(s: UserResponse): UserModel = UserModel(
@@ -26,6 +29,9 @@ object UserMapper : BaseMapper<UserResponse, UserModel>() {
         phone = s.phone,
         city = s.city,
         company = CompanyMapper.transformTo(s.company),
-        state = s.state
+        state = s.state,
+        instagram = s.instagram,
+        gender = s.gender,
+        profile = s.profile,
     )
 }

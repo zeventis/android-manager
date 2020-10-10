@@ -7,34 +7,32 @@
     android:background="@color/colorBluePrincipal"
     tools:context=".presentation.ui.intro.IntroFragment">
 
-    <ImageView
-        android:id="@+id/introFragmentIconIV"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="72dp"
-        android:src="@drawable/ic_inovacao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/introFragmentTitleGl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
 
     <TextView
         android:id="@+id/introFragmentTitleTv"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:fontFamily="sans-serif-black"
+        android:textAllCaps="true"
         android:letterSpacing="0.07"
-        android:text="ZEVENTIS"
+        android:text="zeventis"
         android:textColor="@android:color/white"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/introFragmentIconIV" />
+        app:layout_constraintTop_toTopOf="@id/introFragmentTitleGl" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:fontFamily="sans-serif-medium"
-        android:text="event management"
+        android:text="promoter management"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/introFragmentLoginBt"

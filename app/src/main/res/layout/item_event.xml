@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="8dp"
+    android:elevation="6dp"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/itemEventDayTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="7" />
+
+        <TextView
+            android:id="@+id/itemEventDayExtendedTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/itemEventDayTv"
+            app:layout_constraintStart_toStartOf="@id/itemEventDayTv"
+            app:layout_constraintTop_toBottomOf="@id/itemEventDayTv"
+            tools:text="QUA" />
+
+        <ImageView
+            android:id="@+id/itemEventBannerIv"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@string/home_event_photo"
+            app:layout_constraintStart_toEndOf="@id/itemEventDayExtendedTv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itemEventNameTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-black"
+            android:maxLines="1"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/itemEventBannerIv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Universo Paralello" />
+
+        <TextView
+            android:id="@+id/itemEventPromotersNumberLabelTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif"
+            android:text="Nº de promoteres"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@id/itemEventNameTv"
+            app:layout_constraintTop_toBottomOf="@id/itemEventNameTv" />
+
+        <TextView
+            android:id="@+id/itemEventPromotersNumberTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorBlueSecondary"
+            app:layout_constraintBottom_toBottomOf="@id/itemEventPromotersNumberLabelTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/itemEventPromotersNumberLabelTv"
+            app:layout_constraintTop_toTopOf="@id/itemEventPromotersNumberLabelTv"
+            tools:text="12" />
+
+        <TextView
+            android:id="@+id/itemEventCoastLabelTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Custo"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@id/itemEventNameTv"
+            app:layout_constraintTop_toBottomOf="@id/itemEventPromotersNumberLabelTv" />
+
+        <TextView
+            android:id="@+id/itemEventCoastTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorBlueSecondary"
+            app:layout_constraintBottom_toBottomOf="@id/itemEventCoastLabelTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/itemEventCoastLabelTv"
+            app:layout_constraintTop_toTopOf="@id/itemEventCoastLabelTv"
+            tools:text="R$ 900,00" />
+
+        <TextView
+            android:id="@+id/itemEventProgressCampaignTitleTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:text="Campanha"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@id/itemEventProgressCampaignPb"
+            app:layout_constraintTop_toBottomOf="@id/itemEventBannerIv" />
+
+        <ProgressBar
+            android:id="@+id/itemEventProgressCampaignPb"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:indeterminate="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/progress_actions_event"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemEventProgressCampaignTitleTv"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/itemEventProgressCampaignCountTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/itemEventProgressCampaignPb"
+            app:layout_constraintEnd_toEndOf="@id/itemEventProgressCampaignPb"
+            app:layout_constraintStart_toStartOf="@id/itemEventProgressCampaignPb"
+            app:layout_constraintTop_toTopOf="@id/itemEventProgressCampaignPb"
+            tools:text="50%" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

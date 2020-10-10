@@ -4,7 +4,10 @@ import android.os.Handler
 import androidx.viewpager2.widget.ViewPager2
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseActivity
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.registerActivityRootNsv
+import kotlinx.android.synthetic.main.activity_register.registerFragmentBackBt
+import kotlinx.android.synthetic.main.activity_register.registerFragmentRegisterStepVp
+import kotlinx.android.synthetic.main.activity_register.registerFragmentTitleTv
 
 class RegisterActivity : BaseActivity() {
 

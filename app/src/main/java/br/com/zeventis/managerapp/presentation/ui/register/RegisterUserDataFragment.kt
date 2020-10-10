@@ -1,15 +1,16 @@
 package br.com.zeventis.managerapp.presentation.ui.register
 
 import android.content.Intent
-import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.RegisterManager
+import br.com.zeventis.managerapp.domain.enum.ProfileTypeEnum
 import br.com.zeventis.managerapp.presentation.ui.home.HomeActivity
-import com.irozon.sneaker.Sneaker
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.fragment_register_user_data.*
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentDoneBtn
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentEmailIl
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentInstagramIl
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentPasswordIl
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentUsernameIl
 import org.koin.android.ext.android.inject
 
 
@@ -27,9 +28,11 @@ class RegisterUserDataFragment : BaseFragment() {
 
     private fun updateRegisterSingleton() {
         val registerTemp = registerManager.getRegister()
-        registerTemp.username = registerFragmentUsernameEl.editText?.text.toString()
-        registerTemp.email = registerFragmentEmailEl.editText?.text.toString()
+        registerTemp.username = registerFragmentUsernameIl.editText?.text.toString()
+        registerTemp.email = registerFragmentEmailIl.editText?.text.toString()
         registerTemp.password = registerFragmentPasswordIl.editText?.text.toString()
+        registerTemp.instagram = registerFragmentInstagramIl.editText?.text.toString()
+        registerTemp.profile = ProfileTypeEnum.FREE
         registerManager.saveRegister(registerTemp)
     }
 
@@ -53,13 +56,6 @@ class RegisterUserDataFragment : BaseFragment() {
     }
 
     private fun handleRegisterSuccess() {
-        Sneaker.with(requireActivity())
-            .setTitle("Cadastro")
-            .setMessage("Você foi cadastrado com sucesso")
-            .setCornerRadius(1)
-            .setDuration(3000)
-            .autoHide(true)
-            .sneakSuccess()
         startActivity(Intent(activity, HomeActivity::class.java))
         registerManager.clearRegister()
         activity?.finish()

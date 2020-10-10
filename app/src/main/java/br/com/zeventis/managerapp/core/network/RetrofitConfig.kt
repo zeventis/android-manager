@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 fun provideApi(retrofit: Retrofit): IApiCore = retrofit.create(IApiCore::class.java)
 
 
+// TODO Add network verify interceptor
 fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
     lateinit var retrofit: Retrofit
     val httpClient = OkHttpClient.Builder()

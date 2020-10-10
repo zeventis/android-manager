@@ -10,13 +10,19 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(R.anim.activity_slide_start_enter, R.anim.activity_scale_start_exit)
+        overridePendingTransition(
+            R.anim.activity_slide_start_enter,
+            R.anim.activity_scale_start_exit
+        )
         init()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.activity_scale_finish_enter, R.anim.activity_slide_finish_exit);
+        overridePendingTransition(
+            R.anim.activity_scale_finish_enter,
+            R.anim.activity_slide_finish_exit
+        )
 
     }
 }

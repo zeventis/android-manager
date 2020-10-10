@@ -5,7 +5,8 @@ import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.presentation.ui.login.LoginActivity
 import br.com.zeventis.managerapp.presentation.ui.register.RegisterActivity
-import kotlinx.android.synthetic.main.fragment_intro.*
+import kotlinx.android.synthetic.main.fragment_intro.introFragmentLoginBt
+import kotlinx.android.synthetic.main.fragment_intro.introFragmentRegisterBt
 
 class IntroFragment : BaseFragment() {
     override fun getContentLayoutId(): Int = R.layout.fragment_intro

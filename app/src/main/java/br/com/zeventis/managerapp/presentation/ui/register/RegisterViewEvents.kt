@@ -1,6 +1,6 @@
 package br.com.zeventis.managerapp.presentation.ui.register
 
-import br.com.zeventis.managerapp.presentation.model.login.User
+import br.com.zeventis.managerapp.presentation.model.authentication.User
 
 open class RegisterViewEvents {
 
