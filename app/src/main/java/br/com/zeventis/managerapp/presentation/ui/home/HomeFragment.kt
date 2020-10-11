@@ -45,7 +45,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
                     3,
                     "Rifaina Beach Festival",
                     "11/05/2020",
-                    "DEZ/21",
+                    "URL",
                     BigDecimal(150),
                     99,
                     10

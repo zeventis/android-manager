@@ -92,6 +92,7 @@ dependencies {
     implementation viewDependencies.navigationFragment
     implementation viewDependencies.navigationUi
     implementation viewDependencies.viewpager
+    implementation viewDependencies.lottie
     kapt viewDependencies.lifecycleCompiler
     kapt viewDependencies.glideCompiler
 

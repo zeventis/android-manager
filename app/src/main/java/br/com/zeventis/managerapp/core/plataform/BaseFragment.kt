@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.irozon.sneaker.Sneaker
 import java.io.IOException
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import retrofit2.HttpException
 import retrofit2.Response
@@ -36,9 +37,15 @@ abstract class BaseFragment : Fragment() {
         when (error) {
             is UnknownHostException -> handleServerDown(tag)
             is IOException -> handleNetworkError(tag)
+            is SocketTimeoutException -> handleTimeoutError(tag)
             is HttpException -> handleHttpException(tag, error)
             else -> handleGenericException(error)
         }
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleTimeoutError(tag: String) {
+        Log.e(tag, "TIMEOUT-ERROR")
     }
 
     private fun handleHttpException(tag: String, error: HttpException) {

@@ -13,7 +13,7 @@ ext {
     CoreKtxVersion = '1.3.2'
 
     AppCompatVersion = '1.2.0'
-    ConstraintLayoutVersion = '2.0.1'
+    ConstraintLayoutVersion = '2.0.2'
     RecyclerViewVersion = '1.1.0'
     LifeCycleVersion = '1.1.1'
     SneakerVersion = '2.0.0'
@@ -23,6 +23,7 @@ ext {
     MaterialVersion = '1.2.1'
     NavigationVersion = '2.3.0'
     ViewPagerVersion = '1.1.0-alpha01'
+    LottieVersion = '3.4.4'
 
     KoinVersion = '1.0.1'
 
@@ -62,7 +63,8 @@ ext {
             material          : "com.google.android.material:material:$MaterialVersion",
             navigationFragment: "androidx.navigation:navigation-fragment-ktx:$NavigationVersion",
             navigationUi      : "androidx.navigation:navigation-ui-ktx:$NavigationVersion",
-            viewpager         : "androidx.viewpager2:viewpager2:$ViewPagerVersion"
+            viewpager         : "androidx.viewpager2:viewpager2:$ViewPagerVersion",
+            lottie            : "com.airbnb.android:lottie:$LottieVersion"
     ]
 
     otherDependencies = [
@@ -80,5 +82,4 @@ ext {
             couroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutinesVersion",
             couroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutinesVersion"
     ]
-
 }
