@@ -13,7 +13,7 @@ class AuthInterceptor(context: Context) : Interceptor {
         val requestBuilder = chain.request().newBuilder()
         val user = sessionManager.getUser()
 
-        if (user != null && chain.request().url.encodedPath == Constants.Router.AUTHENTICATION) {
+        if (user != null && chain.request().url.encodedPath != Constants.Router.AUTHENTICATION && chain.request().url.encodedPath != Constants.Router.REGISTER) {
             requestBuilder.addHeader("Authorization", "Bearer ${user.token}")
         } else {
             Response.Builder()

@@ -10,14 +10,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 fun provideApi(retrofit: Retrofit): IApiCore = retrofit.create(IApiCore::class.java)
 
-
 // TODO Add network verify interceptor
 fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
     lateinit var retrofit: Retrofit
     val httpClient = OkHttpClient.Builder()
 
-    addLoggingInterceptor(httpClient)
-    addAuthInterceptor(httpClient, authInterceptor)
+    addInterceptors(httpClient, authInterceptor)
 
     retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
@@ -28,10 +26,7 @@ fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
     return retrofit
 }
 
-private fun addLoggingInterceptor(client: OkHttpClient.Builder) {
-    client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-}
-
-private fun addAuthInterceptor(client: OkHttpClient.Builder, authInterceptor: AuthInterceptor) {
-    client.addInterceptor(authInterceptor)
+private fun addInterceptors(httpClient: OkHttpClient.Builder, authInterceptor: AuthInterceptor) {
+    httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+    httpClient.addInterceptor(authInterceptor)
 }

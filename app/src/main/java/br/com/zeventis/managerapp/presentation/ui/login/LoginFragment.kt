@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment() {
             when (it) {
                 is LoginViewEvents.OnLoginSuccess -> handleLoginSuccess()
                 is LoginViewEvents.OnLoginFailed -> handleError(
-                    LoginFragment::class.java.toString(),
+                    this::class.java.toString(),
                     it.exceptionError
                 )
             }

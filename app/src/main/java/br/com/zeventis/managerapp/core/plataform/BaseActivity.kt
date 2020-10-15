@@ -23,6 +23,5 @@ abstract class BaseActivity : AppCompatActivity() {
             R.anim.activity_scale_finish_enter,
             R.anim.activity_slide_finish_exit
         )
-
     }
 }

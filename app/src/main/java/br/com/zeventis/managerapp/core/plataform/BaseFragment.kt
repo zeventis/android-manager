@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.irozon.sneaker.Sneaker
 import java.io.IOException
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import retrofit2.HttpException
 import retrofit2.Response
@@ -37,16 +37,22 @@ abstract class BaseFragment : Fragment() {
             is UnknownHostException -> handleServerDown(tag)
             is IOException -> handleNetworkError(tag)
             is HttpException -> handleHttpException(tag, error)
+            is SocketTimeoutException -> handleTimeoutError(tag)
             else -> handleGenericException(error)
         }
     }
 
     private fun handleHttpException(tag: String, error: HttpException) {
         when (error.code()) {
-            401 -> handleUnauthorized(tag)
+            403 -> handleUnauthorized(tag)
             500 -> handleBackendError(tag, error.response())
             else -> handleGenericCode(error)
         }
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleTimeoutError(tag: String) {
+        Log.e(tag, "TIMEOUT-ERROR")
     }
 
     // TODO Implements correctly handle error
@@ -56,13 +62,6 @@ abstract class BaseFragment : Fragment() {
 
     // TODO Implements correctly handle error
     private fun handleGenericException(error: Throwable) {
-        Sneaker.with(requireActivity())
-            .setTitle("Erro")
-            .setMessage(error.message.toString())
-            .setCornerRadius(64, 32)
-            .setDuration(10000)
-            .autoHide(true)
-            .sneakError()
         Log.e("GENERIC-ERROR", error.toString())
     }
 
@@ -73,27 +72,11 @@ abstract class BaseFragment : Fragment() {
 
     // TODO Implements correctly handle error
     private fun handleGenericCode(error: HttpException) {
-        Sneaker.with(requireActivity())
-            .setTitle("Erro")
-            .setMessage(error.message.toString())
-            .setCornerRadius(64, 32)
-            .setDuration(10000)
-            .autoHide(true)
-            .sneakError()
         Log.e("GENERIC-CODE-ERROR", error.toString())
     }
 
     // TODO Implements correctly handle error
     private fun handleBackendError(tag: String, response: Response<*>?) {
-        response?.message()?.let {
-            Sneaker.with(requireActivity())
-                .setTitle("Erro")
-                .setMessage(it)
-                .setCornerRadius(64, 32)
-                .setDuration(10000)
-                .autoHide(true)
-                .sneakError()
-        }
         Log.e(tag, response.toString())
     }
 

@@ -48,7 +48,7 @@ class RegisterUserDataFragment : BaseFragment() {
             when (it) {
                 is RegisterViewEvents.OnRegisterSuccess -> handleRegisterSuccess()
                 is RegisterViewEvents.OnRegisterFailed -> handleError(
-                    RegisterUserDataFragment::class.java.toString(),
+                    this::class.java.toString(),
                     it.exceptionError
                 )
             }

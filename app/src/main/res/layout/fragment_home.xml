@@ -4,17 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF">
+    android:background="@color/colorBackgroundGrey">
 
     <ImageView
         android:id="@+id/homeFragmentBackgroundUserIv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:background="@color/colorBluePrincipal"
         android:importantForAccessibility="no"
-        android:src="@drawable/background_user_home"
         app:layout_constraintBottom_toTopOf="@id/homeFragmentProfileGl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +21,7 @@
         android:id="@+id/homeFragmentUserTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/home_user_logged"
@@ -36,6 +32,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Olá, Gabriel" />
+
+    <ImageView
+        android:id="@+id/homeFragmentAddEventBt"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/generic_back_button"
+        android:padding="8dp"
+        android:src="@drawable/ic_add_white"
+        app:layout_constraintBottom_toTopOf="@id/homeFragmentProfileGl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/homeFragmentProfileGl"

@@ -1,24 +1,11 @@
 package br.com.zeventis.managerapp.core.utils.extensions
 
-fun String.theAbbreviateMonth(): String {
-    val monthNames = arrayOf(
-        "JAN",
-        "FEV",
-        "MAR",
-        "ABR",
-        "MAI",
-        "JUN",
-        "JUL",
-        "AGO",
-        "SET",
-        "OTU",
-        "NOV",
-        "DEZ"
-    )
+import java.text.SimpleDateFormat
+import java.util.Date
 
-    val dateString = this
+fun String.formatDate(): String {
+    val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
+    val date: Date = simpleDateFormat.parse(this)
 
-
-
-    return monthNames[Integer.parseInt(this)]
+    return simpleDateFormat.format(date).replace("/", "-")
 }

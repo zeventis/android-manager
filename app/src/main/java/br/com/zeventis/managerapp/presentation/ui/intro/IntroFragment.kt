@@ -12,10 +12,10 @@ class IntroFragment : BaseFragment() {
     override fun getContentLayoutId(): Int = R.layout.fragment_intro
 
     override fun init() {
-        initSetClickListeners()
+        initOnClickListeners()
     }
 
-    private fun initSetClickListeners() {
+    private fun initOnClickListeners() {
         introFragmentLoginBt.setOnClickListener {
             startActivity(Intent(activity, LoginActivity::class.java))
         }

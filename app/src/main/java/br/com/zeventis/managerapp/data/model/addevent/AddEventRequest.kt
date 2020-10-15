@@ -8,8 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class AddEventRequest(
     @SerializedName("name") val name: String,
     @SerializedName("date") val date: String,
-    @SerializedName("imageUrl") val imageUrl: String? = null,
-    @SerializedName("promotersNumber") val promotersNumber: Int,
+    @SerializedName("base64Image") val base64Image: String? = null,
     @SerializedName("defaultActionsPerPromoter") val defaultActionsPerPromoter: Int,
     @SerializedName("minimumActionsRequiredPerPromoter") val minimumActionsRequiredPerPromoter: Int
 ) : Parcelable
