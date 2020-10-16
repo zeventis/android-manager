@@ -12,6 +12,7 @@ object AddEventRequestMapper : BaseMapper<AddEventRequestModel, AddEventRequestP
             date = s.date,
             base64Image = s.base64Image,
             defaultActionsPerPromoter = s.defaultActionsPerPromoter,
+            ticketPrice = s.ticketPrice,
             minimumActionsRequiredPerPromoter = s.minimumActionsRequiredPerPromoter
         )
 
@@ -21,6 +22,7 @@ object AddEventRequestMapper : BaseMapper<AddEventRequestModel, AddEventRequestP
             date = s.date,
             base64Image = s.base64Image,
             defaultActionsPerPromoter = s.defaultActionsPerPromoter,
+            ticketPrice = s.ticketPrice,
             minimumActionsRequiredPerPromoter = s.minimumActionsRequiredPerPromoter
         )
 }

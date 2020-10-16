@@ -4,8 +4,11 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 fun String.formatDate(): String {
-    val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
+    val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
     val date: Date = simpleDateFormat.parse(this)
 
-    return simpleDateFormat.format(date).replace("/", "-")
+    val formattedDate = simpleDateFormat.format(date)
+    val dateArray = formattedDate.split("/")
+
+    return "${dateArray[2]}-${dateArray[1]}-${dateArray[0]}"
 }

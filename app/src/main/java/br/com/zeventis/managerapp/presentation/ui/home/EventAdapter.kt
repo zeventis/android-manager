@@ -17,18 +17,19 @@ import kotlinx.android.synthetic.main.item_event.view.itemEventBannerIv
 import kotlinx.android.synthetic.main.item_event.view.itemEventCoastTv
 import kotlinx.android.synthetic.main.item_event.view.itemEventDayExtendedTv
 import kotlinx.android.synthetic.main.item_event.view.itemEventDayTv
+import kotlinx.android.synthetic.main.item_event.view.itemEventHourTv
 import kotlinx.android.synthetic.main.item_event.view.itemEventNameTv
 import kotlinx.android.synthetic.main.item_event.view.itemEventProgressCampaignCountTv
 import kotlinx.android.synthetic.main.item_event.view.itemEventProgressCampaignPb
 import kotlinx.android.synthetic.main.item_event.view.itemEventPromotersNumberTv
 
 class EventAdapter(
-    private var eventsList: List<HomeEvent>? = null,
+    private val eventsList: List<HomeEvent>,
     private val context: Context,
     private val listener: EventListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int = eventsList?.size!!
+    override fun getItemCount(): Int = eventsList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return EventViewHolder(
@@ -41,17 +42,10 @@ class EventAdapter(
     }
 
     private fun bindEvent(position: Int, holder: RecyclerView.ViewHolder) {
-        val eventItem = eventsList?.get(position)
+        val eventItem = eventsList[position]
         val viewHolder = holder as EventViewHolder
-        if (eventItem != null) {
-            viewHolder.bindView(eventItem)
-            holder.itemView.setOnClickListener { listener.onClickEvent(eventItem) }
-        }
-    }
-
-    fun updateEventList(eventList: List<HomeEvent>) {
-        this.eventsList = eventList
-        notifyDataSetChanged()
+        viewHolder.bindView(eventItem)
+        holder.itemView.setOnClickListener { listener.onClickEvent(eventItem) }
     }
 
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -68,6 +62,12 @@ class EventAdapter(
             setCoastFormatted(event)
             setDayTextView(event)
             setDayOfWeekTextView(event)
+            setHourTextView(event)
+        }
+
+        private fun setHourTextView(event: HomeEvent) {
+            val hour = event.date.split("T")[1]
+            itemView.itemEventHourTv.text = hour
         }
 
         private fun setProgressbar(event: HomeEvent) {
@@ -87,7 +87,8 @@ class EventAdapter(
 
         private fun setDayOfWeekTextView(event: HomeEvent) {
             val calendar: Calendar = Calendar.getInstance()
-            calendar.time = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "br")).parse(event.date)
+            val dateWithoutHour = event.date.split("T")[0]
+            calendar.time = SimpleDateFormat("yyyy-MM-dd", Locale("pt", "br")).parse(dateWithoutHour)
             val dayOfMonth: String? =
                 calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale("pt", "br"))
 
@@ -95,8 +96,9 @@ class EventAdapter(
         }
 
         private fun setDayTextView(event: HomeEvent) {
+            val dateWithoutHour = event.date.split("T")[0]
             val formattedEventDate =
-                SimpleDateFormat("dd/MM/yyyy", Locale("pt", "br")).parse(event.date)
+                SimpleDateFormat("yyyy-MM-dd", Locale("pt", "br")).parse(dateWithoutHour)
             itemView.itemEventDayTv.text =
                 DateFormat.format("dd", formattedEventDate).toString()
         }

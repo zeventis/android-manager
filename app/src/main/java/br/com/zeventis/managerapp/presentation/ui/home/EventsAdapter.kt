@@ -20,7 +20,11 @@ class EventsAdapter(
     private val activity: HomeActivity?
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int = eventsList?.size!!
+    override fun getItemCount(): Int = if (eventsList.isNullOrEmpty()) {
+        0
+    } else {
+        eventsList!!.size
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return HeaderViewHolder(

@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text|textCapWords"
                 android:maxLines="1"
-                android:text="Universo Paralelo"
+                android:text="B-day Gabriel"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -122,6 +122,29 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addEventFragmentTicketPriceEl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Valor do ingresso da cortesia *"
+            android:textColorHint="@color/colorBluePrincipal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterEl">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1"
+                android:text="R$ 500,00"
+                android:textColor="@color/colorBluePrincipal"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addEventFragmentDateEl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -132,14 +155,14 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toStartOf="@id/addEventFragmentHourEl"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceEl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="21/12/2021"
+                android:text="10/03/2021"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -154,14 +177,14 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/addEventFragmentDateEl"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceEl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="18:00"
+                android:text="20:00"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -194,9 +217,12 @@
             android:layout_marginBottom="32dp"
             android:contentDescription="foto do evento"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/addEventFragmentDoneBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourEl" />
+            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourEl"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_goneMarginBottom="32dp" />
 
         <Button
             android:id="@+id/addEventFragmentDoneBtn"

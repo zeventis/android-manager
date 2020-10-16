@@ -12,6 +12,7 @@ import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.extensions.formatDate
@@ -20,6 +21,7 @@ import com.irozon.sneaker.Sneaker
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
+import java.math.BigDecimal
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventClipboardIv
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventCloseBt
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventCodeTv
@@ -30,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDoneBtn
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentHourEl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentMinimumActionsPerPromoterEl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentNameEl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentTicketPriceEl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoBt
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoIv
 import org.koin.android.ext.android.inject
@@ -107,22 +110,27 @@ class AddEventFragment : BaseFragment() {
     }
 
     private fun handleDoneButton() {
-        val dateTime = transformDate()
         val addEventRequestPresentation = AddEventRequestPresentation(
             name = addEventFragmentNameEl.editText?.text.toString(),
-            date = dateTime,
+            date = transformDate(),
             base64Image = base64Url,
             defaultActionsPerPromoter = Integer.parseInt(
                 addEventFragmentDefaultActionsPerPromoterEl.editText?.text.toString()
             ),
+            ticketPrice = formatTicketPriceToBigDecimal(),
             minimumActionsRequiredPerPromoter = Integer.parseInt(
                 addEventFragmentMinimumActionsPerPromoterEl.editText?.text.toString()
             )
         )
 
         addEventViewModel.addEvent(addEventRequestPresentation)
-
     }
+
+    private fun formatTicketPriceToBigDecimal() = BigDecimal(
+        addEventFragmentTicketPriceEl.editText?.text.toString()
+            .replace("R$ ", "")
+            .replace(",", ".")
+    )
 
     private fun transformDate(): String {
         val dateString = addEventFragmentDateEl.editText?.text.toString().formatDate()
@@ -161,8 +169,12 @@ class AddEventFragment : BaseFragment() {
         val clipboard =
             context?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
         val clip =
-            ClipData.newPlainText("Código do evento", eventCode) // TODO Add friendly user message
+            ClipData.newPlainText(
+                "Código do evento",
+                eventCode
+            ) // TODO Add friendly user message to send on whatsapp
         clipboard.setPrimaryClip(clip)
+        Toast.makeText(context, "Código copiado: $eventCode", Toast.LENGTH_LONG).show()
     }
 
     companion object {
