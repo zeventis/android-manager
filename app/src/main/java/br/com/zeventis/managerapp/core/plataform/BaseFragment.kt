@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import org.json.JSONException
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -37,6 +38,7 @@ abstract class BaseFragment : Fragment() {
             is UnknownHostException -> handleServerDown(tag)
             is IOException -> handleNetworkError(tag)
             is HttpException -> handleHttpException(tag, error)
+            is JSONException -> handleJsonException(tag)
             is SocketTimeoutException -> handleTimeoutError(tag)
             else -> handleGenericException(error)
         }
@@ -48,6 +50,11 @@ abstract class BaseFragment : Fragment() {
             500 -> handleBackendError(tag, error.response())
             else -> handleGenericCode(error)
         }
+    }
+
+    // TODO Implements correctly handle error
+    private fun handleJsonException(tag: String) {
+        Log.e(tag, "JSON-ERROR")
     }
 
     // TODO Implements correctly handle error
