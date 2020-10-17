@@ -28,7 +28,7 @@ interface IApiCore {
     suspend fun register(@Body loginRequest: RegisterRequest): UserResponse
 
     @GET(Constants.Router.GET_COMPANY_BY_NAME)
-    suspend fun getCompanyByName(@Path("name") companyName: String): CompanyRegisterSearchResponse
+    suspend fun getCompanyByName(@Path("name") companyName: String): List<CompanyRegisterSearchResponse>
 
     @GET(Constants.Router.GET_PROFILE)
     suspend fun getProducerProfile(): ProducerProfileResponse

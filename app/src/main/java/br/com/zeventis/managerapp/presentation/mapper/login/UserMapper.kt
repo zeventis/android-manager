@@ -17,7 +17,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         state = s.state,
         profile = s.profile,
         gender = s.gender,
-        instagram = s.instagram
+        instagram = s.instagram ?: ""
     )
 
     override fun transformTo(s: User): UserModel = UserModel(
@@ -30,7 +30,7 @@ object UserMapper : BaseMapper<User, UserModel>() {
         city = s.city,
         company = CompanyLoginMapper.transformTo(s.company),
         state = s.state,
-        instagram = s.instagram,
+        instagram = s.instagram ?: "",
         gender = s.gender,
         profile = s.profile,
     )

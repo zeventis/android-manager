@@ -15,6 +15,7 @@ object RegisterMapper : BaseMapper<RegisterRequest, RegisterModel>() {
         profile = s.profile,
         state = s.state,
         username = s.username,
+        instagram = s.instagram ?: "",
         gender = s.gender,
         company = CompanyRegisterMapper.transformFrom(s.company)
     )
@@ -28,6 +29,7 @@ object RegisterMapper : BaseMapper<RegisterRequest, RegisterModel>() {
         phone = s.phone,
         profile = s.profile,
         state = s.state,
+        instagram = s.instagram ?: "",
         username = s.username,
         gender = s.gender,
         company = CompanyRegisterMapper.transformTo(s.company)

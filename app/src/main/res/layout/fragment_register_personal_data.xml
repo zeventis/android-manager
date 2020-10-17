@@ -6,7 +6,7 @@
     android:background="@android:color/white">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentNameEl"
+        android:id="@+id/registerFragmentNameIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Nome *"
@@ -26,7 +26,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentPhoneEl"
+        android:id="@+id/registerFragmentPhoneIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
         android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentNameEl">
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentNameIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
         android:textColorHint="@color/colorBluePrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentPhoneEl">
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentPhoneIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

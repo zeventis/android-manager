@@ -53,7 +53,7 @@
             android:orientation="horizontal" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentNameEl"
+            android:id="@+id/addEventFragmentNameIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -76,7 +76,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentDefaultActionsPerPromoterEl"
+            android:id="@+id/addEventFragmentDefaultActionsPerPromoterIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -86,7 +86,7 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentNameEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentNameIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -99,7 +99,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentMinimumActionsPerPromoterEl"
+            android:id="@+id/addEventFragmentMinimumActionsPerPromoterIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -109,7 +109,7 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentDefaultActionsPerPromoterEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentDefaultActionsPerPromoterIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -122,7 +122,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentTicketPriceEl"
+            android:id="@+id/addEventFragmentTicketPriceIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -132,7 +132,7 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -145,7 +145,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentDateEl"
+            android:id="@+id/addEventFragmentDateIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -153,9 +153,9 @@
             android:layout_marginEnd="8dp"
             android:hint="Data *"
             android:textColorHint="@color/colorBluePrincipal"
-            app:layout_constraintEnd_toStartOf="@id/addEventFragmentHourEl"
+            app:layout_constraintEnd_toStartOf="@id/addEventFragmentHourIl"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceEl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -168,7 +168,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentHourEl"
+            android:id="@+id/addEventFragmentHourIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -176,8 +176,8 @@
             android:hint="Hora *"
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/addEventFragmentDateEl"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceEl">
+            app:layout_constraintStart_toEndOf="@id/addEventFragmentDateIl"
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTicketPriceIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -204,7 +204,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourEl"
+            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourIl"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -220,7 +220,7 @@
             app:layout_constraintBottom_toTopOf="@id/addEventFragmentDoneBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourEl"
+            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourIl"
             app:layout_constraintVertical_bias="0.0"
             app:layout_goneMarginBottom="32dp" />
 

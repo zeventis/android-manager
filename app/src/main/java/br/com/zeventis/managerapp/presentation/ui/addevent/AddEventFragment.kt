@@ -26,13 +26,13 @@ import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventC
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventCloseBt
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventCodeTv
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentBackBt
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDateEl
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDefaultActionsPerPromoterEl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDateIl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDefaultActionsPerPromoterIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDoneBtn
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentHourEl
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentMinimumActionsPerPromoterEl
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentNameEl
-import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentTicketPriceEl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentHourIl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentMinimumActionsPerPromoterIl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentNameIl
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentTicketPriceIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoBt
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoIv
 import org.koin.android.ext.android.inject
@@ -111,15 +111,15 @@ class AddEventFragment : BaseFragment() {
 
     private fun handleDoneButton() {
         val addEventRequestPresentation = AddEventRequestPresentation(
-            name = addEventFragmentNameEl.editText?.text.toString(),
+            name = addEventFragmentNameIl.editText?.text.toString(),
             date = transformDate(),
             base64Image = base64Url,
             defaultActionsPerPromoter = Integer.parseInt(
-                addEventFragmentDefaultActionsPerPromoterEl.editText?.text.toString()
+                addEventFragmentDefaultActionsPerPromoterIl.editText?.text.toString()
             ),
             ticketPrice = formatTicketPriceToBigDecimal(),
             minimumActionsRequiredPerPromoter = Integer.parseInt(
-                addEventFragmentMinimumActionsPerPromoterEl.editText?.text.toString()
+                addEventFragmentMinimumActionsPerPromoterIl.editText?.text.toString()
             )
         )
 
@@ -127,14 +127,14 @@ class AddEventFragment : BaseFragment() {
     }
 
     private fun formatTicketPriceToBigDecimal() = BigDecimal(
-        addEventFragmentTicketPriceEl.editText?.text.toString()
+        addEventFragmentTicketPriceIl.editText?.text.toString()
             .replace("R$ ", "")
             .replace(",", ".")
     )
 
     private fun transformDate(): String {
-        val dateString = addEventFragmentDateEl.editText?.text.toString().formatDate()
-        val hourString = addEventFragmentHourEl.editText?.text.toString()
+        val dateString = addEventFragmentDateIl.editText?.text.toString().formatDate()
+        val hourString = addEventFragmentHourIl.editText?.text.toString()
 
         return "${dateString}T${hourString}"
     }

@@ -1,14 +1,18 @@
 package br.com.zeventis.managerapp.core.plataform
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import kotlinx.android.synthetic.main.fragment_register_company_data.loading
 import org.json.JSONException
 import retrofit2.HttpException
 import retrofit2.Response
@@ -31,7 +35,28 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getContentLayoutId(), container, false)
     }
 
+    protected fun hideKeyboard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view: View? = activity.currentFocus
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    open fun showLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    open fun hideLoading() {
+        if (loading != null) {
+            loading.visibility = View.GONE
+        }
+    }
+
     protected fun handleError(tag: String, error: Throwable) {
+        hideLoading()
         Log.e(tag, error.toString())
 
         when (error) {

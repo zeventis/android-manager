@@ -1,6 +1,7 @@
 package br.com.zeventis.managerapp.presentation.ui.register
 
 import android.content.Intent
+import android.view.View
 import br.com.zeventis.managerapp.R
 import br.com.zeventis.managerapp.core.plataform.BaseFragment
 import br.com.zeventis.managerapp.core.utils.RegisterManager
@@ -26,6 +27,16 @@ class RegisterUserDataFragment : BaseFragment() {
         initOnClickListeners()
     }
 
+    override fun showLoading() {
+        super.showLoading()
+        registerFragmentDoneBtn.visibility = View.GONE
+    }
+
+    override fun hideLoading() {
+        super.hideLoading()
+        registerFragmentDoneBtn.visibility = View.VISIBLE
+    }
+
     private fun updateRegisterSingleton() {
         val registerTemp = registerManager.getRegister()
         registerTemp.username = registerFragmentUsernameIl.editText?.text.toString()
@@ -40,6 +51,7 @@ class RegisterUserDataFragment : BaseFragment() {
         registerFragmentDoneBtn.setOnClickListener {
             updateRegisterSingleton()
             registerViewModel.register(registerManager.getRegister())
+
         }
     }
 
@@ -56,6 +68,7 @@ class RegisterUserDataFragment : BaseFragment() {
     }
 
     private fun handleRegisterSuccess() {
+        hideLoading()
         startActivity(Intent(activity, HomeActivity::class.java))
         registerManager.clearRegister()
         activity?.finish()

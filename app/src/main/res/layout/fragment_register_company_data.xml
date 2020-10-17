@@ -6,7 +6,7 @@
     android:background="@android:color/white">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentCompanyNameEl"
+        android:id="@+id/registerFragmentCompanyNameIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Nome da empresa *"
@@ -20,29 +20,42 @@
             android:layout_height="wrap_content"
             android:inputType="text|textCapWords"
             android:maxLines="1"
-            android:text="UP produções"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/registerFragmentCompanyNameIl"
+        app:layout_constraintEnd_toEndOf="@id/registerFragmentCompanyNameIl"
+        app:layout_constraintTop_toTopOf="@id/registerFragmentCompanyNameIl" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerFragmentPhoneCompanyEl"
+        android:id="@+id/registerFragmentPhoneCompanyIl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:enabled="false"
         android:hint="Telefone da empresa *"
-        android:textColorHint="@color/colorBluePrincipal"
+        android:textColorHint="@drawable/field_default_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentCompanyNameEl">
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentCompanyNameIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:inputType="number"
             android:maxLines="1"
-            android:text="(34) 3227-1970"
-            android:textColor="@color/colorBluePrincipal"
+            android:textColor="@drawable/field_default_style"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,19 +64,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:enabled="false"
         android:hint="CEP *"
-        android:textColorHint="@color/colorBluePrincipal"
+        android:textColorHint="@drawable/field_default_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerFragmentPhoneCompanyEl">
+        app:layout_constraintTop_toBottomOf="@+id/registerFragmentPhoneCompanyIl">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:inputType="number"
             android:maxLines="1"
-            android:text="38408-140"
-            android:textColor="@color/colorBluePrincipal"
+            android:textColor="@drawable/field_default_style"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,8 +86,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:enabled="false"
         android:hint="Número *"
-        android:textColorHint="@color/colorBluePrincipal"
+        android:textColorHint="@drawable/field_default_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerFragmentCepIl">
@@ -81,10 +96,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:inputType="number"
             android:maxLines="1"
-            android:text="731"
-            android:textColor="@color/colorBluePrincipal"
+            android:textColor="@drawable/field_default_style"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,8 +108,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:enabled="false"
         android:hint="Complemento *"
-        android:textColorHint="@color/colorBluePrincipal"
+        android:textColorHint="@drawable/field_default_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerFragmentAddressNumberIl">
@@ -102,10 +118,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:inputType="number"
             android:maxLines="1"
-            android:text="7º andar"
-            android:textColor="@color/colorBluePrincipal"
+            android:textColor="@drawable/field_default_style"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

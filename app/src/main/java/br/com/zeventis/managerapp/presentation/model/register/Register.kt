@@ -14,7 +14,7 @@ data class Register(
     var profile: ProfileTypeEnum = ProfileTypeEnum.FREE,
     var state: String = "",
     var gender: String = "",
-    var instagram: String = "",
+    var instagram: String? = null,
     var company: Company? = Company(),
     var companyId: Long = Long.MIN_VALUE,
     var username: String = "",

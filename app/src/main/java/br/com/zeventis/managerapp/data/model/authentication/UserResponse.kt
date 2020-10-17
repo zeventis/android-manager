@@ -17,7 +17,7 @@ data class UserResponse(
     @SerializedName("profile") val profile: ProfileTypeEnum,
     @SerializedName("token") val token: String,
     @SerializedName("gender") val gender: String,
-    @SerializedName("instagram") val instagram: String,
+    @SerializedName("instagram") val instagram: String?,
     @SerializedName("company") val company: CompanyLoginResponse,
 ) : Parcelable
 

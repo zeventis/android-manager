@@ -17,7 +17,7 @@ data class ProducerProfileResponse(
     @SerializedName("city") val city: String,
     @SerializedName("profile") val profile: String,
     @SerializedName("token") val token: String,
-    @SerializedName("instagram") val instagram: String,
+    @SerializedName("instagram") val instagram: String?,
     @SerializedName("company") val company: CompanyProfileResponse,
 ) : Parcelable
 

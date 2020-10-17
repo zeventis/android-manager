@@ -7,9 +7,9 @@ import kotlinx.android.synthetic.main.activity_register.registerFragmentRegister
 import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentBirthdayDateIl
 import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentCityIl
 import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentGenderIl
-import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNameEl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNameIl
 import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentNext2Btn
-import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentPhoneEl
+import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentPhoneIl
 import kotlinx.android.synthetic.main.fragment_register_personal_data.registerFragmentStateIl
 import org.koin.android.ext.android.inject
 
@@ -39,8 +39,8 @@ class RegisterPersonalDataFragment : BaseFragment() {
 
     private fun updateRegisterSingleton() {
         val registerTemp = registerManager.getRegister()
-        registerTemp.name = registerFragmentNameEl.editText?.text.toString()
-        registerTemp.phone = registerFragmentPhoneEl.editText?.text.toString()
+        registerTemp.name = registerFragmentNameIl.editText?.text.toString()
+        registerTemp.phone = registerFragmentPhoneIl.editText?.text.toString()
         registerTemp.state = registerFragmentStateIl.editText?.text.toString()
         registerTemp.city = registerFragmentCityIl.editText?.text.toString()
         registerTemp.birthdayDate = registerFragmentBirthdayDateIl.editText?.text.toString()

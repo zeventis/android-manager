@@ -14,6 +14,7 @@ import br.com.zeventis.managerapp.domain.repository.IHomeRepository
 import br.com.zeventis.managerapp.domain.repository.ILoginRepository
 import br.com.zeventis.managerapp.domain.repository.IRegisterRepository
 import br.com.zeventis.managerapp.domain.usecase.AddEventUseCase
+import br.com.zeventis.managerapp.domain.usecase.GetCompanyUseCase
 import br.com.zeventis.managerapp.domain.usecase.HomeUseCase
 import br.com.zeventis.managerapp.domain.usecase.LoginUseCase
 import br.com.zeventis.managerapp.domain.usecase.RegisterUseCase
@@ -28,7 +29,7 @@ import org.koin.dsl.module.module
 // TODO Config koinScope at all modules using initializer's
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get()) }
-    viewModel { RegisterViewModel(get(), get()) }
+    viewModel { RegisterViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { AddEventViewModel(get()) }
 }
@@ -56,4 +57,5 @@ val useCaseModule = module {
     factory { RegisterUseCase(get()) }
     factory { HomeUseCase(get()) }
     factory { AddEventUseCase(get()) }
+    factory { GetCompanyUseCase(get()) }
 }
