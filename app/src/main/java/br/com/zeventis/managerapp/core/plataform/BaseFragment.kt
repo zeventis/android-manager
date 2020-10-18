@@ -9,15 +9,23 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import br.com.zeventis.managerapp.core.network.AuthInterceptor
+import br.com.zeventis.managerapp.core.network.ResponseError
+import br.com.zeventis.managerapp.core.network.provideRetrofit
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import kotlinx.android.synthetic.main.fragment_register_company_data.loading
+import okhttp3.ResponseBody
 import org.json.JSONException
+import org.koin.android.ext.android.inject
+import retrofit2.Converter
 import retrofit2.HttpException
 import retrofit2.Response
 
 abstract class BaseFragment : Fragment() {
+
+    private val authInterceptor: AuthInterceptor by inject()
 
     protected abstract fun getContentLayoutId(): Int
     protected abstract fun init()
@@ -55,17 +63,54 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-    protected fun handleError(tag: String, error: Throwable) {
+    protected fun handleError(tag: String, exception: Exception) {
         hideLoading()
-        Log.e(tag, error.toString())
+        val responseError: ResponseError? = convertResponseError(exception, tag)
 
-        when (error) {
+        handleBackendError(responseError, tag)
+    }
+
+    // TODO Extract to other class
+    private fun handleBackendError(responseError: ResponseError?, tag: String) {
+        val errorList = responseError?.errorMessages
+        if (errorList != null) {
+            for (error in errorList) {
+                Log.e(tag, "CODE: ${error.code} -----> ${error.message}")
+                when (error.code) {
+                    // TODO Implements code error back-end
+                }
+            }
+        }
+    }
+
+    private fun convertResponseError(
+        exception: Exception,
+        tag: String
+    ): ResponseError? {
+        var responseError: ResponseError? = null
+        val httpException: HttpException = exception as HttpException
+        val converter: Converter<ResponseBody, ResponseError> =
+            provideRetrofit(authInterceptor).responseBodyConverter(
+                ResponseError::class.java,
+                arrayOfNulls<Annotation>(0)
+            )
+
+        try {
+            responseError = converter.convert(httpException.response()?.errorBody())
+        } catch (e: Exception) {
+            handleExceptions(exception, tag)
+        }
+        return responseError
+    }
+
+    private fun handleExceptions(exception: Exception, tag: String) {
+        when (exception) {
             is UnknownHostException -> handleServerDown(tag)
             is IOException -> handleNetworkError(tag)
-            is HttpException -> handleHttpException(tag, error)
+            is HttpException -> handleHttpException(tag, exception)
             is JSONException -> handleJsonException(tag)
             is SocketTimeoutException -> handleTimeoutError(tag)
-            else -> handleGenericException(error)
+            else -> handleGenericException(exception)
         }
     }
 
