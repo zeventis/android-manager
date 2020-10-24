@@ -104,7 +104,7 @@ class AddEventFragment : BaseFragment() {
     // TODO Refactor to view model
     private fun savePhotoIntoRequest(selectedImage: Bitmap?) {
         val byteArrayOutputStream = ByteArrayOutputStream()
-        selectedImage?.compress(Bitmap.CompressFormat.PNG, 30, byteArrayOutputStream)
+        selectedImage?.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
         base64Url = Base64.encodeToString(byteArray, Base64.NO_WRAP)
     }
