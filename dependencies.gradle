@@ -16,12 +16,12 @@ ext {
     ConstraintLayoutVersion = '2.0.1'
     RecyclerViewVersion = '1.1.0'
     LifeCycleVersion = '1.1.1'
+    LifeCycleViewmodelVersion = '2.2.0'
     SneakerVersion = '2.0.0'
     GlideVersion = '4.11.0'
     CardViewVersion = '1.0.0'
     LegacySupportVersion = '1.0.0'
     MaterialVersion = '1.2.1'
-    NavigationVersion = '2.3.0'
     ViewPagerVersion = '1.1.0-alpha01'
 
     KoinVersion = '1.0.1'
@@ -43,7 +43,6 @@ ext {
             okhttp                  : "com.squareup.okhttp3:okhttp:$OkhttpVersion",
             retrofit                : "com.squareup.retrofit2:retrofit:$RetrofitVersion",
             retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$RetrofitVersion",
-            retrofitRxAdapter       : "com.squareup.retrofit2:adapter-rxjava2:$RetrofitVersion",
             gson                    : "com.google.code.gson:gson:$GsonVersion",
             okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$LoginInterceptorVersion"
     ]
@@ -54,14 +53,13 @@ ext {
             recyclerView      : "androidx.recyclerview:recyclerview:$RecyclerViewVersion",
             lifecycle         : "android.arch.lifecycle:extensions:$LifeCycleVersion",
             lifecycleCompiler : "android.arch.lifecycle:compiler:$LifeCycleVersion",
+            lifecycleViewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$LifeCycleViewmodelVersion",
             cardView          : "androidx.cardview:cardview:$CardViewVersion",
             legacySupport     : "androidx.legacy:legacy-support-v4:$LegacySupportVersion",
             sneaker           : "com.irozon.sneaker:sneaker:$SneakerVersion",
             glide             : "com.github.bumptech.glide:glide:$GlideVersion",
             glideCompiler     : "com.github.bumptech.glide:compiler:$GlideVersion",
             material          : "com.google.android.material:material:$MaterialVersion",
-            navigationFragment: "androidx.navigation:navigation-fragment-ktx:$NavigationVersion",
-            navigationUi      : "androidx.navigation:navigation-ui-ktx:$NavigationVersion",
             viewpager         : "androidx.viewpager2:viewpager2:$ViewPagerVersion"
     ]
 

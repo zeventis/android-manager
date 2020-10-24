@@ -84,23 +84,21 @@ dependencies {
     // View Dependencies
     implementation viewDependencies.appcompat
     implementation viewDependencies.lifecycle
+    implementation viewDependencies.lifecycleViewmodel
     implementation viewDependencies.constraintLayout
     implementation viewDependencies.recyclerView
     implementation viewDependencies.material
     implementation viewDependencies.legacySupport
     implementation viewDependencies.glide
     implementation viewDependencies.sneaker
-    implementation viewDependencies.navigationFragment
-    implementation viewDependencies.navigationUi
     implementation viewDependencies.viewpager
     kapt viewDependencies.lifecycleCompiler
     kapt viewDependencies.glideCompiler
 
-
     // Test Dependencies
     testImplementation testDependencies.junit
-    androidTestImplementation testDependencies.mockk
     testImplementation testDependencies.koin
+    androidTestImplementation testDependencies.mockk
     androidTestImplementation testDependencies.junitExt
     androidTestImplementation testDependencies.espresso
     androidTestImplementation testDependencies.room

@@ -11,6 +11,7 @@
     <string name="register_user_infos">Por último escolha seu usuário e senha</string>
 
     <!-- Home -->
-    <string name="home_event_count">%d eventos</string>
+    <string name="home_event_count">%d evento</string>
+    <string name="home_event_count_plural">%d eventos</string>
     <string name="home_event_photo">foto do evento</string>
 </resources>

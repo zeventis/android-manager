@@ -15,7 +15,7 @@
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-medium"
         android:letterSpacing="0.04"
-        android:text="Seu evento foi criado!!\n\nPara adicionar promoters envie o código abaixo para ele ou então entre nos detalhes do evento e clique o botão adicionar"
+        android:text="Seu evento foi criado!!\n\nPara adicionar promoters envie o código abaixo para ele ou então entre nos detalhes do evento e clique no botão adicionar"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="20sp"
