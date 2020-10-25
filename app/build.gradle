@@ -92,6 +92,8 @@ dependencies {
     implementation viewDependencies.glide
     implementation viewDependencies.sneaker
     implementation viewDependencies.viewpager
+    implementation viewDependencies.redmadrobotInputMask
+    implementation viewDependencies.shimmer
     kapt viewDependencies.lifecycleCompiler
     kapt viewDependencies.glideCompiler
 

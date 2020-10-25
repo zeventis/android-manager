@@ -1,10 +1,9 @@
 package br.com.zeventis.producer.presentation.ui.register
 
+import android.text.InputType
 import br.com.zeventis.producer.R
-import br.com.zeventis.producer.core.components.MaskWatcher
-import br.com.zeventis.producer.core.components.MaskWatcher.Companion.DATE_MASK
-import br.com.zeventis.producer.core.components.MaskWatcher.Companion.PHONE_MASK
 import br.com.zeventis.producer.core.plataform.BaseFragment
+import br.com.zeventis.producer.core.utils.Constants
 import br.com.zeventis.producer.core.utils.RegisterManager
 import br.com.zeventis.producer.core.utils.extensions.formatDateToBackendFormat
 import br.com.zeventis.producer.core.utils.extensions.unmask
@@ -30,9 +29,10 @@ class RegisterPersonalDataFragment : BaseFragment() {
     }
 
     private fun initMask() {
-        registerFragmentPhoneIl.editText?.addTextChangedListener(MaskWatcher(PHONE_MASK))
-        registerFragmentBirthdayDateIl.editText?.addTextChangedListener(MaskWatcher(DATE_MASK))
+        maskField(registerFragmentBirthdayDateIl.editText, Constants.Mask.DATE, Constants.MaskDigits.DATE, InputType.TYPE_CLASS_NUMBER)
+        maskField(registerFragmentPhoneIl.editText, Constants.Mask.PHONE, Constants.MaskDigits.PHONE, InputType.TYPE_CLASS_NUMBER)
     }
+
 
     private fun initOnClickListeners() {
         registerFragmentNext2Btn.setOnClickListener { handleNextButton() }

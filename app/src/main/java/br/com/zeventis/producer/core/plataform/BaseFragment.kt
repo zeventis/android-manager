@@ -2,16 +2,19 @@ package br.com.zeventis.producer.core.plataform
 
 import android.app.Activity
 import android.os.Bundle
+import android.text.method.DigitsKeyListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import br.com.zeventis.producer.core.network.AuthInterceptor
 import br.com.zeventis.producer.core.network.ResponseError
 import br.com.zeventis.producer.core.network.provideRetrofit
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -51,6 +54,27 @@ abstract class BaseFragment : Fragment() {
             view = View(activity)
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    protected fun maskField(
+        editText: EditText?,
+        formatMask: String,
+        digits: String = "",
+        inputType: Int = 0
+    ) {
+        if (editText != null) {
+            if (inputType != 0) {
+                editText.inputType = inputType
+            }
+
+            if (digits.isNotEmpty()) {
+                editText.keyListener = DigitsKeyListener.getInstance(digits)
+            }
+
+            val listener = MaskedTextChangedListener(formatMask, editText)
+            editText.addTextChangedListener(listener)
+            editText.onFocusChangeListener = listener
+        }
     }
 
     open fun showLoading() {

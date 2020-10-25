@@ -18,9 +18,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapWords"
+            android:inputType="text|textCapCharacters"
             android:maxLines="1"
-            android:text="Gabriel"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -39,7 +38,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapWords"
             android:maxLength="15"
             android:maxLines="1"
             android:textColor="@color/colorBluePrincipal"
@@ -60,9 +58,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapWords"
+            android:inputType="textCapWords"
             android:maxLines="1"
-            android:text="MG"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -81,9 +78,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapWords"
+            android:inputType="text|textCapCharacters"
             android:maxLines="1"
-            android:text="Uberlândia"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +98,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapWords"
             android:maxLength="14"
             android:maxLines="1"
             android:textColor="@color/colorBluePrincipal"
@@ -127,7 +122,6 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:text="Masculino"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
 

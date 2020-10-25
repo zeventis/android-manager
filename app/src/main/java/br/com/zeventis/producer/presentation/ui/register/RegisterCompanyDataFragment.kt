@@ -3,15 +3,14 @@ package br.com.zeventis.producer.presentation.ui.register
 import android.app.AlertDialog
 import android.os.Handler
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.zeventis.producer.R
-import br.com.zeventis.producer.core.components.MaskWatcher
-import br.com.zeventis.producer.core.components.MaskWatcher.Companion.CEP_MASK
-import br.com.zeventis.producer.core.components.MaskWatcher.Companion.PHONE_MASK
 import br.com.zeventis.producer.core.plataform.BaseFragment
+import br.com.zeventis.producer.core.utils.Constants
 import br.com.zeventis.producer.core.utils.RegisterManager
 import br.com.zeventis.producer.core.utils.extensions.unmask
 import br.com.zeventis.producer.presentation.model.register.Company
@@ -67,8 +66,8 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
     }
 
     private fun initMask() {
-        registerFragmentCepIl.editText?.addTextChangedListener(MaskWatcher(CEP_MASK))
-        registerFragmentPhoneCompanyIl.editText?.addTextChangedListener(MaskWatcher(PHONE_MASK))
+        maskField(registerFragmentPhoneCompanyIl.editText, Constants.Mask.PHONE, Constants.MaskDigits.PHONE, InputType.TYPE_CLASS_NUMBER)
+        maskField(registerFragmentCepIl.editText, Constants.Mask.CEP, Constants.MaskDigits.CEP, InputType.TYPE_CLASS_NUMBER)
     }
 
     private fun handleCompanyNotFound() {

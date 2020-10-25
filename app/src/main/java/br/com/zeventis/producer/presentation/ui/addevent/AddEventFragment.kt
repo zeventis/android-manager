@@ -8,14 +8,15 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.text.InputType
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import br.com.zeventis.producer.R
-import br.com.zeventis.producer.core.components.MaskWatcher
 import br.com.zeventis.producer.core.plataform.BaseFragment
+import br.com.zeventis.producer.core.utils.Constants
 import br.com.zeventis.producer.core.utils.extensions.formatDateToBackendFormat
 import br.com.zeventis.producer.presentation.model.addevent.AddEventRequestPresentation
 import com.irozon.sneaker.Sneaker
@@ -61,8 +62,10 @@ class AddEventFragment : BaseFragment() {
     }
 
     private fun initMask() {
-        addEventFragmentDateIl.editText?.addTextChangedListener(MaskWatcher(MaskWatcher.DATE_MASK))
-        addEventFragmentHourIl.editText?.addTextChangedListener(MaskWatcher(MaskWatcher.HOUR_MASK))
+        maskField(addEventFragmentDateIl.editText, Constants.Mask.DATE, Constants.MaskDigits.DATE, InputType.TYPE_CLASS_NUMBER)
+        maskField(addEventFragmentHourIl.editText, Constants.Mask.HOUR, Constants.MaskDigits.HOUR, InputType.TYPE_CLASS_NUMBER)
+        maskField(addEventFragmentTicketPriceIl.editText, Constants.Mask.MONEY, Constants.MaskDigits.MONEY, InputType.TYPE_CLASS_NUMBER)
+
     }
 
     private fun initOnClickListeners() {
@@ -112,7 +115,7 @@ class AddEventFragment : BaseFragment() {
     private fun togglePhotoViews(selectedImage: Bitmap?) {
         addEventFragmentUploadPhotoIv.setImageBitmap(selectedImage)
         addEventFragmentUploadPhotoIv.visibility = View.VISIBLE
-        addEventFragmentUploadPhotoBt.visibility = View.GONE
+        addEventFragmentUploadPhotoBt.visibility = View.INVISIBLE
     }
 
     private fun handleDoneButton() {

@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:text="\@gabrielgrs2"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -42,7 +41,6 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:text="gabrielgrs"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,7 +61,6 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLines="1"
-            android:text="gabriel_guilherme2006@hotmail.com"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +83,6 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:text="123456"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>

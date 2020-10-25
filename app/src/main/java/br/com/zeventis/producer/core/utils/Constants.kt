@@ -20,6 +20,22 @@ internal class Constants private constructor() {
         const val USER = "user"
         const val REGISTER = "register"
     }
+
+    internal object Mask {
+        const val DATE = "[00]{/}[00]{/}[0000]"
+        const val HOUR = "[00]{:}[00]"
+        const val MONEY = "R$ [00999]"
+        const val PHONE = "([00]) [0] [0000]{-}[0000]"
+        const val CEP = "[0000]{-}[00]"
+    }
+
+    internal object MaskDigits {
+        const val DATE = "/0123456789"
+        const val HOUR = ":0123456789"
+        const val MONEY = "R$ 0123456789"
+        const val PHONE = "()-0123456789 "
+        const val CEP = "-0123456789"
+    }
 }
 
 

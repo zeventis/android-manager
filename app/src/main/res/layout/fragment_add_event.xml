@@ -52,48 +52,55 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" />
 
+        <Button
+            android:id="@+id/addEventFragmentUploadPhotoBt"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="64dp"
+            android:background="@drawable/white_rounded_button"
+            android:text="foto"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentTitleGl"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/addEventFragmentUploadPhotoIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="64dp"
+            android:contentDescription="foto do evento"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentTitleGl"
+            app:layout_constraintVertical_bias="0.0" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addEventFragmentNameIl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
             android:hint="Nome *"
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentTitleGl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentUploadPhotoBt">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textCapWords"
+                android:inputType="text|textCapCharacters"
                 android:maxLines="1"
-                android:text="B-day Gabriel"
-                android:textColor="@color/colorBluePrincipal"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addEventFragmentDefaultActionsPerPromoterIl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Ações por promoter *"
-            android:textColorHint="@color/colorBluePrincipal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentNameIl">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLines="1"
-                android:text="9"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,14 +116,35 @@
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentDefaultActionsPerPromoterIl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentNameIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="9"
+                android:textColor="@color/colorBluePrincipal"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addEventFragmentDefaultActionsPerPromoterIl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Total de ações por promoter *"
+            android:textColorHint="@color/colorBluePrincipal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterIl">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -128,18 +156,16 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Valor do ingresso da cortesia *"
+            android:hint="Valor da cortesia *"
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentMinimumActionsPerPromoterIl">
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentDefaultActionsPerPromoterIl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:maxLines="1"
-                android:text="R$ 500,00"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -160,9 +186,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:maxLines="1"
-                android:text="10/03/2021"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -182,47 +206,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:maxLines="1"
-                android:text="20:00"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/addEventFragmentUploadPhotoBt"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/white_rounded_button"
-            android:text="enviar foto"
-            android:textAllCaps="true"
-            android:textColor="@color/colorBluePrincipal"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourIl"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ImageView
-            android:id="@+id/addEventFragmentUploadPhotoIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="foto do evento"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/addEventFragmentDoneBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventFragmentHourIl"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_goneMarginBottom="32dp" />
 
         <Button
             android:id="@+id/addEventFragmentDoneBtn"
@@ -240,7 +227,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addEventFragmentUploadPhotoBt"
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentHourIl"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
