@@ -11,6 +11,8 @@ import br.com.zeventis.producer.presentation.model.home.HomeEvent
 import br.com.zeventis.producer.presentation.model.home.HomeEvents
 import br.com.zeventis.producer.presentation.ui.addevent.AddEventActivity
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentAddEventBt
+import kotlinx.android.synthetic.main.fragment_home.homeFragmentEmptyIv
+import kotlinx.android.synthetic.main.fragment_home.homeFragmentEmptyTv
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentEventsListRv
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentEventsListShimmerSfl
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentUserTv
@@ -67,6 +69,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
         homeViewModel.viewEvents.observe(viewLifecycleOwner, {
             when (it) {
                 is HomeViewEvents.OnGetEventsSuccess -> handleGetEventSuccess(it.eventsList)
+                is HomeViewEvents.OnGetEventsEmpty -> handleGetEventsEmpty()
                 is HomeViewEvents.OnGetEventsFailed -> handleError(
                     this::class.java.toString(),
                     it.exceptionError
@@ -84,6 +87,12 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
         })
     }
 
+    private fun handleGetEventsEmpty() {
+        homeFragmentEventsListRv.visibility = View.GONE
+        homeFragmentEmptyTv.visibility = View.VISIBLE
+        homeFragmentEmptyIv.visibility = View.VISIBLE
+    }
+
     private fun startLoading() {
         homeFragmentEventsListRv.visibility = View.GONE
         homeFragmentEventsListShimmerSfl.visibility = View.VISIBLE
@@ -97,6 +106,8 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
     }
 
     private fun handleGetEventSuccess(eventsList: List<HomeEvents>) {
+        homeFragmentEmptyTv.visibility = View.GONE
+        homeFragmentEmptyIv.visibility = View.GONE
         eventsAdapter?.updateEventList(eventsList)
     }
 

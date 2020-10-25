@@ -7,4 +7,6 @@ open class HomeViewEvents {
     data class OnGetEventsSuccess(val eventsList: List<HomeEvents>) : HomeViewEvents()
 
     data class OnGetEventsFailed(val exceptionError: Exception) : HomeViewEvents()
+
+    class OnGetEventsEmpty : HomeViewEvents()
 }

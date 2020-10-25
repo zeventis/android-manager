@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.com.zeventis.producer.core.plataform.BaseViewModel
 import br.com.zeventis.producer.core.plataform.DefaultViewState
+import br.com.zeventis.producer.domain.model.home.HomeEventsModel
 import br.com.zeventis.producer.domain.usecase.HomeUseCase
 import br.com.zeventis.producer.presentation.mapper.home.HomeEventsMapper
 import kotlinx.coroutines.launch
@@ -24,8 +25,13 @@ class HomeViewModel(
             try {
                 states.value = DefaultViewState.ShowLoading()
 
-                val response = homeUseCase.execute()
-                events.value = HomeViewEvents.OnGetEventsSuccess(HomeEventsMapper.transformToList(response))
+                val response: List<HomeEventsModel> = homeUseCase.execute()
+
+                if (response.isEmpty()) {
+                    events.value = HomeViewEvents.OnGetEventsEmpty()
+                } else {
+                    events.value = HomeViewEvents.OnGetEventsSuccess(HomeEventsMapper.transformToList(response))
+                }
 
                 states.value = DefaultViewState.HideLoading()
             } catch (exception: Exception) {
