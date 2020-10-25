@@ -56,6 +56,11 @@ class EventsAdapter(
         notifyDataSetChanged()
     }
 
+    fun clearEventList() {
+        this.eventsList = listOf()
+        notifyDataSetChanged()
+    }
+
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(
             monthExtended: String,

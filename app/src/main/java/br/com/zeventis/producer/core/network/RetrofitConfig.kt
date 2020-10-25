@@ -21,7 +21,7 @@ fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
 
     retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilTder().create()))
         .client(httpClient.build())
         .build()
 
@@ -30,8 +30,8 @@ fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
 
 private fun addConnectionTimeout(httpClient: OkHttpClient.Builder) {
     httpClient.connectTimeout(1, TimeUnit.MINUTES)
-        .readTimeout(30, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(1, TimeUnit.MINUTES)
+        .writeTimeout(1, TimeUnit.MINUTES)
 }
 
 private fun addInterceptors(httpClient: OkHttpClient.Builder, authInterceptor: AuthInterceptor) {

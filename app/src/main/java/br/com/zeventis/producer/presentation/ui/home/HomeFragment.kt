@@ -37,6 +37,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
 
     override fun onResume() {
         super.onResume()
+        hideEmptyListEventsView()
         homeViewModel.getEvents()
     }
 
@@ -88,6 +89,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
     }
 
     private fun handleGetEventsEmpty() {
+        clearEvents()
         homeFragmentEventsListRv.visibility = View.GONE
         homeFragmentEmptyTv.visibility = View.VISIBLE
         homeFragmentEmptyIv.visibility = View.VISIBLE
@@ -106,9 +108,17 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
     }
 
     private fun handleGetEventSuccess(eventsList: List<HomeEvents>) {
+        hideEmptyListEventsView()
+        eventsAdapter?.updateEventList(eventsList)
+    }
+
+   private fun clearEvents() {
+        eventsAdapter?.clearEventList()
+    }
+
+    private fun hideEmptyListEventsView() {
         homeFragmentEmptyTv.visibility = View.GONE
         homeFragmentEmptyIv.visibility = View.GONE
-        eventsAdapter?.updateEventList(eventsList)
     }
 
     private fun initUserLoggedTextView() {
