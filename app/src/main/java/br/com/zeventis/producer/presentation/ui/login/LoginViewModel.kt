@@ -16,19 +16,26 @@ class LoginViewModel(
     private val sessionManager: SessionManager
 ) : BaseViewModel() {
 
-    private var state = MutableLiveData<LoginViewEvents>()
-    val viewState: LiveData<LoginViewEvents> = state
+    private var event = MutableLiveData<LoginViewEvents>()
+    val viewEvent: LiveData<LoginViewEvents> = event
+
+    private var state = MutableLiveData<LoginViewState>()
+    val viewState: LiveData<LoginViewState> = state
 
     fun doLogin(login: Login) {
         viewModelScope.launch {
             try {
+                state.value = LoginViewState.ShowLoading()
+
                 val response = loginUseCase.execute(LoginMapper.transformFrom(login))
                 val userAtPresentationModel = UserMapper.transformFrom(response)
                 sessionManager.saveUser(userAtPresentationModel)
 
-                state.value = LoginViewEvents.OnLoginSuccess(userAtPresentationModel)
+                event.value = LoginViewEvents.OnLoginSuccess(userAtPresentationModel)
+                state.value = LoginViewState.HideLoading(true)
             } catch (exception: Exception) {
-                state.value = LoginViewEvents.OnLoginFailed(exception)
+                event.value = LoginViewEvents.OnLoginFailed(exception)
+                state.value = LoginViewState.HideLoading(false)
             }
         }
     }

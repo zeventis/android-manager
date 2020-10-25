@@ -19,19 +19,26 @@ class RegisterViewModel(
     private val sessionManager: SessionManager
 ) : BaseViewModel() {
 
-    private var state = MutableLiveData<RegisterViewEvents>()
-    val viewState: LiveData<RegisterViewEvents> = state
+    private var event = MutableLiveData<RegisterViewEvents>()
+    val viewEvent: LiveData<RegisterViewEvents> = event
+
+    private var state = MutableLiveData<RegisterViewState>()
+    val viewState: LiveData<RegisterViewState> = state
 
     fun register(register: Register) {
         viewModelScope.launch {
             try {
+                state.value = RegisterViewState.ShowLoading()
+
                 val response = registerUseCase.execute(RegisterMapper.transformTo(register))
                 val userAtPresentationModel = UserMapper.transformFrom(response)
                 sessionManager.saveUser(userAtPresentationModel)
 
-                state.value = RegisterViewEvents.OnRegisterSuccess(userAtPresentationModel)
+                event.value = RegisterViewEvents.OnRegisterSuccess(userAtPresentationModel)
+                state.value = RegisterViewState.HideLoading(true)
             } catch (exception: Exception) {
-                state.value = RegisterViewEvents.OnRegisterFailed(exception)
+                event.value = RegisterViewEvents.OnRegisterFailed(exception)
+                state.value = RegisterViewState.HideLoading(false)
             }
         }
     }
@@ -39,17 +46,21 @@ class RegisterViewModel(
     fun getCompany(companyName: String) {
         viewModelScope.launch {
             try {
-                val response = getCompanyUseCase.execute(companyName)
+                state.value = RegisterViewState.ShowCompanyLoading()
 
+                val response = getCompanyUseCase.execute(companyName)
                 if (response.isEmpty()) {
-                    state.value = RegisterViewEvents.OnGetCompanyNotFound()
+                    event.value = RegisterViewEvents.OnGetCompanyNotFound()
                 } else {
-                    state.value = RegisterViewEvents.OnGetCompanySuccess(
+                    event.value = RegisterViewEvents.OnGetCompanySuccess(
                         CompanySearchRegisterMapper.transformFromList(response)
                     )
                 }
+
+                state.value = RegisterViewState.HideCompanyLoading()
             } catch (exception: Exception) {
-                state.value = RegisterViewEvents.OnGetCompanyFailed(exception)
+                event.value = RegisterViewEvents.OnGetCompanyFailed(exception)
+                state.value = RegisterViewState.HideCompanyLoading()
             }
 
         }

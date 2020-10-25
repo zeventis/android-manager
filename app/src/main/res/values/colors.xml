@@ -16,4 +16,6 @@
     <color name="colorBackgroundGrey">#EFEFEF</color>
     <color name="colorBackgroundGreyA8">#CCEFEFEF</color>
 
+    <color name="backgroundShimmer">#AAAAAA</color>
+
 </resources>

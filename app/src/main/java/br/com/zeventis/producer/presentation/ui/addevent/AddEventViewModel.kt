@@ -14,24 +14,26 @@ class AddEventViewModel(
     private val addEventUseCase: AddEventUseCase
 ) : BaseViewModel() {
 
-    private var state = MutableLiveData<AddEventViewEvents>()
-    val viewState: LiveData<AddEventViewEvents> = state
+    private var event = MutableLiveData<AddEventViewEvents>()
+    val viewEvent: LiveData<AddEventViewEvents> = event
+
+    private var state = MutableLiveData<AddEventViewState>()
+    val viewState: LiveData<AddEventViewState> = state
 
     fun addEvent(addEventRequestPresentation: AddEventRequestPresentation) {
         viewModelScope.launch {
             try {
-                val response = addEventUseCase.execute(
-                    AddEventRequestMapper.transformFrom(addEventRequestPresentation)
-                )
+                state.value = AddEventViewState.ShowLoading()
 
-                state.value =
-                    AddEventViewEvents.OnSaveEventSuccess(
-                        AddEventResponseMapper.transformTo(
-                            response
-                        )
-                    )
+                val response = addEventUseCase.execute(AddEventRequestMapper.transformFrom(addEventRequestPresentation))
+
+                event.value = AddEventViewEvents.OnSaveEventSuccess(
+                    AddEventResponseMapper.transformTo(response)
+                )
+                state.value = AddEventViewState.HideLoading(true)
             } catch (exception: Exception) {
-                state.value = AddEventViewEvents.OnSaveEventFailed(exception)
+                event.value = AddEventViewEvents.OnSaveEventFailed(exception)
+                state.value = AddEventViewState.HideLoading(false)
             }
         }
     }

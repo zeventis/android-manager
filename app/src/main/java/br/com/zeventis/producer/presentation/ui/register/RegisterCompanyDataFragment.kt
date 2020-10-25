@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.custom_dialog_companys.view.dialogCompanyL
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentAddressComplementIl
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentAddressNumberIl
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentCepIl
+import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentCompanyLoadingPb
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentCompanyNameIl
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentNextBtn
 import kotlinx.android.synthetic.main.fragment_register_company_data.registerFragmentPhoneCompanyIl
@@ -40,10 +41,11 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
     override fun getContentLayoutId(): Int = R.layout.fragment_register_company_data
 
     override fun init() {
+        observeViewModelEvents()
+        observeViewModelStates()
+        initMask()
         initTextChangeListeners()
         initOnClickListeners()
-        observeViewModelEvents()
-        initMask()
     }
 
     override fun onClickCompany(company: CompanyRegisterSearchPresentation) {
@@ -53,7 +55,7 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
     }
 
     private fun observeViewModelEvents() {
-        registerViewModel.viewState.observe(viewLifecycleOwner, {
+        registerViewModel.viewEvent.observe(viewLifecycleOwner, {
             when (it) {
                 is RegisterViewEvents.OnGetCompanySuccess -> handleGetCompanySuccess(it.company)
                 is RegisterViewEvents.OnGetCompanyNotFound -> handleCompanyNotFound()
@@ -65,13 +67,29 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
         })
     }
 
+    private fun observeViewModelStates() {
+        registerViewModel.viewState.observe(viewLifecycleOwner, {
+            when (it) {
+                is RegisterViewState.ShowCompanyLoading -> showGetCompanyLoading()
+                is RegisterViewState.HideCompanyLoading -> hideGetCompanyLoading()
+            }
+        })
+    }
+
+    private fun hideGetCompanyLoading() {
+        registerFragmentCompanyLoadingPb.visibility = View.GONE
+    }
+
+    private fun showGetCompanyLoading() {
+        registerFragmentCompanyLoadingPb.visibility = View.VISIBLE
+    }
+
     private fun initMask() {
         maskField(registerFragmentPhoneCompanyIl.editText, Constants.Mask.PHONE, Constants.MaskDigits.PHONE, InputType.TYPE_CLASS_NUMBER)
         maskField(registerFragmentCepIl.editText, Constants.Mask.CEP, Constants.MaskDigits.CEP, InputType.TYPE_CLASS_NUMBER)
     }
 
     private fun handleCompanyNotFound() {
-        hideLoading()
         activity?.let {
             Sneaker.with(it)
                 .setTitle("Atenção!")
@@ -96,7 +114,6 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
     }
 
     private fun handleGetCompanySuccess(companyList: List<CompanyRegisterSearchPresentation>) {
-        hideLoading()
         messageBoxView =
             LayoutInflater.from(activity).inflate(R.layout.custom_dialog_companys, null)
         val messageBoxBuilder = AlertDialog.Builder(activity).setView(messageBoxView)
@@ -128,7 +145,6 @@ class RegisterCompanyDataFragment : BaseFragment(), CompanyRegisterAdapter.Compa
     private fun initTextChangeListeners() {
         getCompanyRunnable = Runnable {
             registerViewModel.getCompany(registerFragmentCompanyNameIl.editText?.text.toString())
-            showLoading()
         }
 
         registerFragmentCompanyNameIl.editText?.addTextChangedListener(object : TextWatcher {

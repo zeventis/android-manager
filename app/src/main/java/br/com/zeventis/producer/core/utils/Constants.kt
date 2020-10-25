@@ -26,7 +26,7 @@ internal class Constants private constructor() {
         const val HOUR = "[00]{:}[00]"
         const val MONEY = "R$ [00999]"
         const val PHONE = "([00]) [0] [0000]{-}[0000]"
-        const val CEP = "[0000]{-}[00]"
+        const val CEP = "[00000]{-}[000]"
     }
 
     internal object MaskDigits {

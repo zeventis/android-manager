@@ -18,7 +18,6 @@ import com.redmadrobot.inputmask.MaskedTextChangedListener
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import kotlinx.android.synthetic.main.fragment_register_company_data.loading
 import okhttp3.ResponseBody
 import org.json.JSONException
 import org.koin.android.ext.android.inject
@@ -77,20 +76,8 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-    open fun showLoading() {
-        loading.visibility = View.VISIBLE
-    }
-
-    open fun hideLoading() {
-        if (loading != null) {
-            loading.visibility = View.GONE
-        }
-    }
-
     protected fun handleError(tag: String, exception: Exception) {
-        hideLoading()
         val responseError: ResponseError? = convertResponseError(exception, tag)
-
         handleBackendError(responseError, tag)
     }
 

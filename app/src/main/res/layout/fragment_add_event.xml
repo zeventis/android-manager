@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -33,7 +34,7 @@
 
         <TextView
             android:id="@+id/addEventFragmentHeaderTitleTv"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:fontFamily="sans-serif-medium"
@@ -50,20 +51,49 @@
             android:id="@+id/addEventFragmentTitleGl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <TextView
+            android:id="@+id/addEventFragmentUploadTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Adicione uma foto para seu evento :)"
+            android:textColor="@color/colorBluePrincipal"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/addEventFragmentUploadPhotoBt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/addEventFragmentUploadPhotoButtonIv"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_camera_blue"
+            app:layout_constraintBottom_toBottomOf="@id/addEventFragmentUploadPhotoBt"
+            app:layout_constraintEnd_toEndOf="@id/addEventFragmentUploadPhotoBt"
+            app:layout_constraintStart_toStartOf="@id/addEventFragmentUploadPhotoBt"
+            app:layout_constraintTop_toTopOf="@+id/addEventFragmentUploadPhotoBt" />
 
         <Button
             android:id="@+id/addEventFragmentUploadPhotoBt"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="64dp"
             android:background="@drawable/white_rounded_button"
-            android:text="foto"
+            android:elevation="1dp"
             android:textAllCaps="true"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/addEventFragmentNameIl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addEventFragmentTitleGl"
@@ -71,17 +101,19 @@
 
         <ImageView
             android:id="@+id/addEventFragmentUploadPhotoIv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="64dp"
+            android:layout_marginBottom="64dp"
             android:contentDescription="foto do evento"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/addEventFragmentNameIl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addEventFragmentTitleGl"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:src="@color/colorBluePrincipal" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addEventFragmentNameIl"
@@ -90,7 +122,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
-            android:hint="Nome *"
+            android:hint="Nome do evento*"
             android:textColorHint="@color/colorBluePrincipal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +131,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textCapCharacters"
+                android:inputType="text|textCapWords"
                 android:maxLines="1"
                 android:textColor="@color/colorBluePrincipal"
                 android:textSize="14sp" />
@@ -224,6 +256,22 @@
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addEventFragmentHourIl"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ProgressBar
+            android:id="@+id/addEventFragmentDoneLoadingPb"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:indeterminate="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

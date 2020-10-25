@@ -1,15 +1,18 @@
 package br.com.zeventis.producer.presentation.ui.home
 
 import android.content.Intent
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.zeventis.producer.R
 import br.com.zeventis.producer.core.network.SessionManager
 import br.com.zeventis.producer.core.plataform.BaseFragment
+import br.com.zeventis.producer.core.plataform.DefaultViewState
 import br.com.zeventis.producer.presentation.model.home.HomeEvent
 import br.com.zeventis.producer.presentation.model.home.HomeEvents
 import br.com.zeventis.producer.presentation.ui.addevent.AddEventActivity
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentAddEventBt
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentEventsListRv
+import kotlinx.android.synthetic.main.fragment_home.homeFragmentEventsListShimmerSfl
 import kotlinx.android.synthetic.main.fragment_home.homeFragmentUserTv
 import org.koin.android.ext.android.inject
 
@@ -24,7 +27,8 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
 
     override fun init() {
         observeViewModelEvents()
-        initUserLoggedText()
+        observeViewModelStates()
+        initUserLoggedTextView()
         initAdapter()
         initClickListeners()
     }
@@ -60,7 +64,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
     }
 
     private fun observeViewModelEvents() {
-        homeViewModel.viewState.observe(viewLifecycleOwner, {
+        homeViewModel.viewEvents.observe(viewLifecycleOwner, {
             when (it) {
                 is HomeViewEvents.OnGetEventsSuccess -> handleGetEventSuccess(it.eventsList)
                 is HomeViewEvents.OnGetEventsFailed -> handleError(
@@ -71,11 +75,32 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
         })
     }
 
+    private fun observeViewModelStates() {
+        homeViewModel.viewState.observe(viewLifecycleOwner, {
+            when (it) {
+                is DefaultViewState.ShowLoading -> startLoading()
+                is DefaultViewState.HideLoading -> hideLoading()
+            }
+        })
+    }
+
+    private fun startLoading() {
+        homeFragmentEventsListRv.visibility = View.GONE
+        homeFragmentEventsListShimmerSfl.visibility = View.VISIBLE
+        homeFragmentEventsListShimmerSfl.startShimmer()
+    }
+
+    private fun hideLoading() {
+        homeFragmentEventsListRv.visibility = View.VISIBLE
+        homeFragmentEventsListShimmerSfl.visibility = View.GONE
+        homeFragmentEventsListShimmerSfl.stopShimmer()
+    }
+
     private fun handleGetEventSuccess(eventsList: List<HomeEvents>) {
         eventsAdapter?.updateEventList(eventsList)
     }
 
-    private fun initUserLoggedText() {
+    private fun initUserLoggedTextView() {
         homeFragmentUserTv.text =
             getString(R.string.home_user_logged, sessionManager.getTwoFirstNameUser())
     }

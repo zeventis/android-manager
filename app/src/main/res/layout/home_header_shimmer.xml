@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/itemEventsEventMonthBackgroundIv"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/background_shimmer_right_rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/itemEventsEventMonthV"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:background="@color/backgroundShimmer"
+        app:layout_constraintBottom_toBottomOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintEnd_toEndOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintStart_toStartOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintTop_toTopOf="@id/itemEventsEventMonthBackgroundIv" />
+
+    <View
+        android:id="@+id/itemEventsEventCountEventV"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/backgroundShimmer"
+        app:layout_constraintBottom_toBottomOf="@id/itemEventsEventMonthBackgroundIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/itemEventsEventMonthBackgroundIv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

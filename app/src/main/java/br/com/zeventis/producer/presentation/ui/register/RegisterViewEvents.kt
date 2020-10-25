@@ -10,6 +10,5 @@ open class RegisterViewEvents {
 
     class OnGetCompanyNotFound : RegisterViewEvents()
     data class OnGetCompanyFailed(val exceptionError: Exception) : RegisterViewEvents()
-    data class OnGetCompanySuccess(val company: List<CompanyRegisterSearchPresentation>) :
-        RegisterViewEvents()
+    data class OnGetCompanySuccess(val company: List<CompanyRegisterSearchPresentation>) : RegisterViewEvents()
 }

@@ -31,12 +31,15 @@ import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentBackBt
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDateIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDefaultActionsPerPromoterIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDoneBtn
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentDoneLoadingPb
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentHourIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentMinimumActionsPerPromoterIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentNameIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentTicketPriceIl
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoBt
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoButtonIv
 import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadPhotoIv
+import kotlinx.android.synthetic.main.fragment_add_event.addEventFragmentUploadTitleTv
 import org.koin.android.ext.android.inject
 
 
@@ -50,6 +53,7 @@ class AddEventFragment : BaseFragment() {
     override fun init() {
         initMask()
         observeViewModelEvents()
+        observeViewModelStates()
         initOnClickListeners()
     }
 
@@ -71,7 +75,7 @@ class AddEventFragment : BaseFragment() {
     private fun initOnClickListeners() {
         addEventFragmentBackBt.setOnClickListener { activity?.onBackPressed() }
         addEventFragmentDoneBtn.setOnClickListener { handleDoneButton() }
-        addEventFragmentUploadPhotoBt.setOnClickListener { handleUploadPhotoButton() }
+        addEventFragmentUploadPhotoButtonIv.setOnClickListener { handleUploadPhotoButton() }
         addEventFragmentUploadPhotoIv.setOnClickListener { handleUploadPhotoButton() }
     }
 
@@ -116,6 +120,8 @@ class AddEventFragment : BaseFragment() {
         addEventFragmentUploadPhotoIv.setImageBitmap(selectedImage)
         addEventFragmentUploadPhotoIv.visibility = View.VISIBLE
         addEventFragmentUploadPhotoBt.visibility = View.INVISIBLE
+        addEventFragmentUploadPhotoButtonIv.visibility = View.INVISIBLE
+        addEventFragmentUploadTitleTv.visibility = View.INVISIBLE
     }
 
     private fun handleDoneButton() {
@@ -149,7 +155,7 @@ class AddEventFragment : BaseFragment() {
     }
 
     private fun observeViewModelEvents() {
-        addEventViewModel.viewState.observe(viewLifecycleOwner, {
+        addEventViewModel.viewEvent.observe(viewLifecycleOwner, {
             when (it) {
                 is AddEventViewEvents.OnSaveEventSuccess -> handleSaveEventSuccess(it.event.eventCode)
                 is AddEventViewEvents.OnSaveEventFailed -> handleError(
@@ -158,6 +164,25 @@ class AddEventFragment : BaseFragment() {
                 )
             }
         })
+    }
+
+    private fun observeViewModelStates() {
+        addEventViewModel.viewState.observe(viewLifecycleOwner, {
+            when (it) {
+                is AddEventViewState.ShowLoading -> showLoading()
+                is AddEventViewState.HideLoading -> hideLoading(it.success)
+            }
+        })
+    }
+
+    private fun showLoading() {
+        addEventFragmentDoneLoadingPb.visibility = View.VISIBLE
+        addEventFragmentDoneBtn.visibility = View.GONE
+    }
+
+    private fun hideLoading(success: Boolean) {
+        if (!success) addEventFragmentDoneBtn.visibility = View.VISIBLE
+        addEventFragmentDoneLoadingPb.visibility = View.GONE
     }
 
     private fun handleSaveEventSuccess(eventCode: String) {

@@ -18,14 +18,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapCharacters"
+            android:inputType="text|textCapWords"
             android:maxLines="1"
             android:textColor="@color/colorBluePrincipal"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/registerFragmentCompanyLoadingPb"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -75,7 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:inputType="number"
             android:maxLines="1"
             android:textColor="@drawable/field_default_style"
             android:textSize="14sp" />
@@ -109,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:enabled="false"
-        android:hint="Complemento *"
+        android:hint="Complemento"
         android:textColorHint="@drawable/field_default_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

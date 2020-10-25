@@ -8,6 +8,7 @@ import br.com.zeventis.producer.core.utils.RegisterManager
 import br.com.zeventis.producer.domain.enum.ProfileTypeEnum
 import br.com.zeventis.producer.presentation.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentDoneBtn
+import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentDoneLoadingPb
 import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentEmailIl
 import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentInstagramIl
 import kotlinx.android.synthetic.main.fragment_register_user_data.registerFragmentPasswordIl
@@ -24,17 +25,8 @@ class RegisterUserDataFragment : BaseFragment() {
 
     override fun init() {
         observeViewModelEvents()
+        observeViewModelStates()
         initOnClickListeners()
-    }
-
-    override fun showLoading() {
-        super.showLoading()
-        registerFragmentDoneBtn.visibility = View.GONE
-    }
-
-    override fun hideLoading() {
-        super.hideLoading()
-        registerFragmentDoneBtn.visibility = View.VISIBLE
     }
 
     private fun updateRegisterSingleton() {
@@ -51,12 +43,11 @@ class RegisterUserDataFragment : BaseFragment() {
         registerFragmentDoneBtn.setOnClickListener {
             updateRegisterSingleton()
             registerViewModel.register(registerManager.getRegister())
-
         }
     }
 
     private fun observeViewModelEvents() {
-        registerViewModel.viewState.observe(viewLifecycleOwner, {
+        registerViewModel.viewEvent.observe(viewLifecycleOwner, {
             when (it) {
                 is RegisterViewEvents.OnRegisterSuccess -> handleRegisterSuccess()
                 is RegisterViewEvents.OnRegisterFailed -> handleError(
@@ -67,8 +58,26 @@ class RegisterUserDataFragment : BaseFragment() {
         })
     }
 
+    private fun observeViewModelStates() {
+        registerViewModel.viewState.observe(viewLifecycleOwner, {
+            when (it) {
+                is RegisterViewState.ShowLoading -> showLoading()
+                is RegisterViewState.HideLoading -> hideLoading(it.success)
+            }
+        })
+    }
+
+    private fun hideLoading(success: Boolean) {
+        if (!success) registerFragmentDoneBtn.visibility = View.VISIBLE
+        registerFragmentDoneLoadingPb.visibility = View.GONE
+    }
+
+    private fun showLoading() {
+        registerFragmentDoneLoadingPb.visibility = View.VISIBLE
+        registerFragmentDoneBtn.visibility = View.GONE
+    }
+
     private fun handleRegisterSuccess() {
-        hideLoading()
         startActivity(Intent(activity, HomeActivity::class.java))
         registerManager.clearRegister()
         activity?.finish()

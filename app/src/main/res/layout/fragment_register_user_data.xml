@@ -105,12 +105,14 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/registerFragmentDoneLoadingPb"
         style="?android:attr/progressBarStyleLarge"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
