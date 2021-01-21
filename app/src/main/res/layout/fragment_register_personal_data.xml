@@ -36,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerFragmentNameIl">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerFragmentPhoneEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="16"
@@ -96,6 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerFragmentCityIl">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerFragmentBirthdayDateEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="14"
