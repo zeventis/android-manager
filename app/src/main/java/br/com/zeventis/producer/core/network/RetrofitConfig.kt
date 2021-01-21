@@ -21,7 +21,7 @@ fun provideRetrofit(authInterceptor: AuthInterceptor): Retrofit {
 
     retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilTder().create()))
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .client(httpClient.build())
         .build()
 

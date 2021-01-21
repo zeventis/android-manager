@@ -2,18 +2,18 @@ ext {
     jUnitVersion = '4.13.1'
     jUnitVersionExtVersion = '1.1.2'
     EspressoCoreVersion = '3.3.0'
-    MockkVersion = '1.10.2'
+    MockkVersion = '1.10.5'
 
     GsonVersion = '2.8.6'
     RetrofitVersion = '2.9.0'
     OkhttpVersion = '4.9.0'
     LoginInterceptorVersion = '4.9.0'
 
-    KotlinVersion = '1.4.10'
+    KotlinVersion = '1.4.21'
     CoreKtxVersion = '1.3.2'
 
     AppCompatVersion = '1.2.0'
-    ConstraintLayoutVersion = '2.0.2'
+    ConstraintLayoutVersion = '2.0.4'
     RecyclerViewVersion = '1.1.0'
     LifeCycleVersion = '1.1.1'
     LifeCycleViewmodelVersion = '2.2.0'
@@ -30,7 +30,7 @@ ext {
 
     CoroutinesVersion = '1.3.9'
 
-    RoomVersion = '2.2.5'
+    RoomVersion = '2.2.6'
 
     testDependencies = [
             junit   : "junit:junit:$jUnitVersion",
