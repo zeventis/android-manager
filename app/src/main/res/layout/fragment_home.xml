@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundGrey">
 
+    <!-- TODO Make All Layouts Stateful layout -->
     <ImageView
         android:id="@+id/homeFragmentBackgroundUserIv"
         android:layout_width="0dp"

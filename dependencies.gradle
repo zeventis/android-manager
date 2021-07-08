@@ -1,27 +1,27 @@
 ext {
-    jUnitVersion = '4.13.1'
+    jUnitVersion = '4.13.2'
     jUnitVersionExtVersion = '1.1.2'
     EspressoCoreVersion = '3.3.0'
-    MockkVersion = '1.10.5'
+    MockkVersion = '1.10.6'
 
     GsonVersion = '2.8.6'
     RetrofitVersion = '2.9.0'
-    OkhttpVersion = '4.9.0'
-    LoginInterceptorVersion = '4.9.0'
+    OkhttpVersion = '5.0.0-alpha.2'
+    LoginInterceptorVersion = '5.0.0-alpha.2'
 
-    KotlinVersion = '1.4.21'
+    KotlinVersion = '1.4.31'
     CoreKtxVersion = '1.3.2'
 
     AppCompatVersion = '1.2.0'
     ConstraintLayoutVersion = '2.0.4'
     RecyclerViewVersion = '1.1.0'
     LifeCycleVersion = '1.1.1'
-    LifeCycleViewmodelVersion = '2.2.0'
+    LifeCycleViewmodelVersion = '2.3.0'
     SneakerVersion = '2.0.0'
-    GlideVersion = '4.11.0'
+    GlideVersion = '4.12.0'
     CardViewVersion = '1.0.0'
     LegacySupportVersion = '1.0.0'
-    MaterialVersion = '1.2.1'
+    MaterialVersion = '1.3.0'
     ViewPagerVersion = '1.1.0-alpha01'
     RedmadrobotInputMaskVersion = '6.0.0'
     ShimmerVersion = '0.5.0'
@@ -33,12 +33,14 @@ ext {
     RoomVersion = '2.2.6'
 
     testDependencies = [
-            junit   : "junit:junit:$jUnitVersion",
-            espresso: "androidx.test.espresso:espresso-core:$EspressoCoreVersion",
-            junitExt: "androidx.test.ext:junit:$jUnitVersionExtVersion",
-            mockk   : "io.mockk:mockk:$MockkVersion",
-            koin    : "org.koin:koin-test:$KoinVersion",
-            room    : "androidx.room:room-testing:$RoomVersion"
+            junit    : "junit:junit:$jUnitVersion",
+            espresso : "androidx.test.espresso:espresso-core:$EspressoCoreVersion",
+            junitExt : "androidx.test.ext:junit:$jUnitVersionExtVersion",
+            mockk    : "io.mockk:mockk:$MockkVersion",
+            koin     : "org.koin:koin-test:$KoinVersion",
+            room     : "androidx.room:room-testing:$RoomVersion",
+            core     : "androidx.arch.core:core-testing:2.1.0",
+            coroutine: "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3"
     ]
 
     networkDependencies = [

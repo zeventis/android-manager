@@ -71,10 +71,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
             when (it) {
                 is HomeViewEvents.OnGetEventsSuccess -> handleGetEventSuccess(it.eventsList)
                 is HomeViewEvents.OnGetEventsEmpty -> handleGetEventsEmpty()
-                is HomeViewEvents.OnGetEventsFailed -> handleError(
-                    this::class.java.toString(),
-                    it.exceptionError
-                )
+                is HomeViewEvents.OnGetEventsFailed -> handleError(this::class.java.toString(), it.exceptionError)
             }
         })
     }
@@ -112,7 +109,7 @@ class HomeFragment : BaseFragment(), EventAdapter.EventListener {
         eventsAdapter?.updateEventList(eventsList)
     }
 
-   private fun clearEvents() {
+    private fun clearEvents() {
         eventsAdapter?.clearEventList()
     }
 

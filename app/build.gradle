@@ -77,47 +77,13 @@ android {
 }
 
 dependencies {
-    // Other Dependencies
-    implementation otherDependencies.kotlin
-    implementation otherDependencies.coreKtx
+    implementation networkDependencies.values()
+    implementation viewDependencies.values()
+    implementation dependencyInjectionDependencies.values()
+    implementation coroutinesDependencies.values()
+    implementation otherDependencies.values()
 
-    // View Dependencies
-    implementation viewDependencies.appcompat
-    implementation viewDependencies.lifecycle
-    implementation viewDependencies.lifecycleViewmodel
-    implementation viewDependencies.constraintLayout
-    implementation viewDependencies.recyclerView
-    implementation viewDependencies.material
-    implementation viewDependencies.legacySupport
-    implementation viewDependencies.glide
-    implementation viewDependencies.sneaker
-    implementation viewDependencies.viewpager
-    implementation viewDependencies.redmadrobotInputMask
-    implementation viewDependencies.shimmer
-    kapt viewDependencies.lifecycleCompiler
-    kapt viewDependencies.glideCompiler
-
-    // Test Dependencies
-    testImplementation testDependencies.junit
-    testImplementation testDependencies.koin
-    androidTestImplementation testDependencies.mockk
-    androidTestImplementation testDependencies.junitExt
-    androidTestImplementation testDependencies.espresso
-    androidTestImplementation testDependencies.room
-
-    // Network Dependencies
-    implementation networkDependencies.okhttp
-    implementation networkDependencies.okhttpLoggingInterceptor
-    implementation networkDependencies.retrofit
-    implementation networkDependencies.retrofitConverterGson
-    implementation networkDependencies.gson
-
-    // Dependency Injection Dependencies
-    implementation dependencyInjectionDependencies.koin
-    implementation dependencyInjectionDependencies.koinCore
-    implementation dependencyInjectionDependencies.koinViewModel
-
-    // Coroutines
-    implementation coroutinesDependencies.couroutinesCore
-    implementation coroutinesDependencies.couroutinesAndroid
+    kapt viewDependencies.values()
+    testImplementation testDependencies.values()
+    androidTestImplementation testDependencies.values()
 }

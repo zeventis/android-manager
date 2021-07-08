@@ -6,11 +6,7 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.text.InputType
-import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -19,10 +15,6 @@ import br.com.zeventis.producer.core.plataform.BaseFragment
 import br.com.zeventis.producer.core.utils.Constants
 import br.com.zeventis.producer.core.utils.extensions.formatDateToBackendFormat
 import br.com.zeventis.producer.presentation.model.addevent.AddEventRequestPresentation
-import com.irozon.sneaker.Sneaker
-import java.io.ByteArrayOutputStream
-import java.io.FileNotFoundException
-import java.io.InputStream
 import java.math.BigDecimal
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventClipboardIv
 import kotlinx.android.synthetic.main.custom_dialog_event_code.view.dialogEventCloseBt
@@ -46,7 +38,7 @@ import org.koin.android.ext.android.inject
 class AddEventFragment : BaseFragment() {
 
     private val addEventViewModel: AddEventViewModel by inject()
-    private var base64Url: String = ""
+    private lateinit var base64Url: String
 
     override fun getContentLayoutId(): Int = R.layout.fragment_add_event
 
@@ -61,7 +53,7 @@ class AddEventFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == LOAD_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            tryToConvertImage(data)
+            activity?.let { addEventViewModel.tryToConvertImage(data, it) }
         }
     }
 
@@ -83,37 +75,6 @@ class AddEventFragment : BaseFragment() {
         val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
         startActivityForResult(photoPickerIntent, LOAD_IMAGE_REQUEST_CODE)
-    }
-
-    // TODO Refactor to view model
-    private fun tryToConvertImage(data: Intent?) {
-        try {
-            val selectedImage = decodeImage(data)
-            togglePhotoViews(selectedImage)
-            savePhotoIntoRequest(selectedImage)
-        } catch (exception: FileNotFoundException) {
-            Log.e(AddEventFragment::class.java.toString(), exception.toString())
-            Sneaker.with(this)
-                .setTitle("Error!!")
-                .setMessage("Ocorreu um erro ao encontrar a imagem, tente novamente") // TODO Refactor to strings
-                .sneakError()
-        }
-    }
-
-    // TODO Refactor to view model
-    private fun decodeImage(data: Intent?): Bitmap? {
-        val imageUri: Uri? = data?.data
-        val imageStream: InputStream? =
-            activity?.contentResolver?.openInputStream(imageUri!!)
-        return BitmapFactory.decodeStream(imageStream)
-    }
-
-    // TODO Refactor to view model
-    private fun savePhotoIntoRequest(selectedImage: Bitmap?) {
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        selectedImage?.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
-        val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-        base64Url = Base64.encodeToString(byteArray, Base64.NO_WRAP)
     }
 
     private fun togglePhotoViews(selectedImage: Bitmap?) {
@@ -158,12 +119,18 @@ class AddEventFragment : BaseFragment() {
         addEventViewModel.viewEvent.observe(viewLifecycleOwner, {
             when (it) {
                 is AddEventViewEvents.OnSaveEventSuccess -> handleSaveEventSuccess(it.event.eventCode)
-                is AddEventViewEvents.OnSaveEventFailed -> handleError(
-                    this::class.java.toString(),
-                    it.exceptionError
-                )
+                is AddEventViewEvents.OnConvertImageSuccess -> {
+                    handleCovertImage(it)
+                }
+                is AddEventViewEvents.OnSaveEventFailed, -> handleError(this::class.java.toString(), it.exception)
+                is AddEventViewEvents.OnConvertImageError -> handleError(this::class.java.toString(), it.exception)
             }
         })
+    }
+
+    private fun handleCovertImage(it: AddEventViewEvents.OnConvertImageSuccess) {
+        base64Url = it.base64Url
+        togglePhotoViews(it.selectedImage)
     }
 
     private fun observeViewModelStates() {
@@ -208,7 +175,7 @@ class AddEventFragment : BaseFragment() {
                 eventCode
             ) // TODO Add friendly user message to send on whatsapp
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(context, "Código copiado: $eventCode", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Código copiado: $eventCode", Toast.LENGTH_LONG).show() // TODO Send string to resource strings
     }
 
     companion object {

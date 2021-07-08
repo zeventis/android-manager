@@ -36,11 +36,17 @@ class SessionManager(context: Context) {
 
         val spitedName = getUser()?.name?.split(" ")
 
-        if (spitedName != null && spitedName.size > 1) {
-            name = "${spitedName[0]} ${spitedName[1]}"
+        if (spitedName != null && spitedName.size > SIZE_NAME_MAJOR_ONE) {
+            name = "${spitedName[FIRST_POSITION_NAME_INDEX]} ${spitedName[SECOND_POSITION_NAME_INDEX]}"
         }
 
         return name
+    }
+
+    companion object {
+        private const val FIRST_POSITION_NAME_INDEX = 0
+        private const val SECOND_POSITION_NAME_INDEX = 1
+        private const val SIZE_NAME_MAJOR_ONE = 1
     }
 
 }
